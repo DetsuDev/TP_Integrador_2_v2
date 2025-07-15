@@ -1,0 +1,6 @@
+*.layout
+*.depend
+/obj
+/bin
+/CSV
+TP_Integrador.cscope_file_list
