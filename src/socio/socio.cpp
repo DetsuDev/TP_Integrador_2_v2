@@ -9,8 +9,7 @@
 using namespace std;
 
 void Socio::mostrar() {
-    cout << estado;
-    if(estado){
+
     cout << "DNI" << dni << endl;
     cout << "Nombre:" << nombre << endl;
     cout << "Apellido: " << apellido<< endl;
@@ -19,7 +18,7 @@ void Socio::mostrar() {
     cout << "Domicilio: ";
     domicilio.mostrar();
     cout << "Email: " << email << endl;
-    }
+
 }
 
 

@@ -116,8 +116,21 @@ void ArchSocio::registrar() {
             return;
         }
     }
-    obj.set_dni(dni);
     cargar(obj);
+    obj.set_dni(dni);
     obj.set_estado(true);
     grabar(obj);
+}
+
+void ArchSocio::listar(){
+    Socio obj;
+    int cant_reg = contar();
+
+    for(int i = 0; i < cant_reg; i++){
+        obj = leer(i);
+        if(obj.get_estado()){
+            obj.mostrar();
+        }
+    }
+
 }

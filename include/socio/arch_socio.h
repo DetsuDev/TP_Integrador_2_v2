@@ -16,6 +16,7 @@ public:
     int buscar(const char* dni);
     void cargar(Socio &obj);
     void registrar();
+    void listar();
 };
 
 #endif // ARCH_SOCIO_H

@@ -74,7 +74,7 @@ void Menu::menu_socios() {
             reg.registrar();
             break;
         case 2:
-            obj.mostrar();
+            reg.listar();
             system("pause");
             break;
         case 0:
