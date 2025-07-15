@@ -1,12 +1,13 @@
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 
-class Menu_principal{
+class Menu{
 
 private:
 
 public:
-    Menu_principal();
+    Menu();
+    void menu_socios();
+    void menu_libros();
 };
 #endif // MENU_PRINCIPAL_H
-

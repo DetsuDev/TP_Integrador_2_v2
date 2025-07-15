@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "menu_principal.h"
+#include "Menu.h"
 using namespace std;
 
 int main()
 {
-    Menu_principal menu;
+    Menu Menu;
 }
