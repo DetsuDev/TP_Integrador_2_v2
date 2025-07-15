@@ -26,5 +26,4 @@ void menu_principal() {
         cout << "--------------------------------\n";
         cout << "REGISTRO\n";
     }
-
 }
