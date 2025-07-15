@@ -1,5 +1,12 @@
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
 
-void menu_principal();
+class Menu_principal{
+
+private:
+
+public:
+    Menu_principal();
+};
 #endif // MENU_PRINCIPAL_H
+

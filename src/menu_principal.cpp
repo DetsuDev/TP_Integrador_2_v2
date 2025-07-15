@@ -19,11 +19,13 @@
 /// SOLICITUD POR NOMBRE Y CUOTAS
 
 using namespace std;
-void menu_principal() {
+
+Menu_principal::Menu_principal() {
     while(true) {
         system("cls");
         cout << "SISTEMA DE GESTION DE BIBLIOTECA\n";
         cout << "--------------------------------\n";
         cout << "REGISTRO\n";
+        system("pause");
     }
 }
