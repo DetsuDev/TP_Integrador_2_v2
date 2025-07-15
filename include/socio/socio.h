@@ -8,7 +8,7 @@
 
 class Socio {
 private:
-    bool estado = false;
+    bool estado;
     char dni[10];
     char nombre[30];
     char apellido[30];

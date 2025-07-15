@@ -65,34 +65,6 @@ int ArchSocio::contar() {
     return tam/sizeof (Socio);
 }
 
-/// Registro
-void ArchSocio::registrar() {
-
-    Funciones f;
-    Socio obj;
-    char dni[10];
-    cout << "Ingrese el DNI: ";
-    f.cargar_cadena(dni, 9);
-
-    int pos = buscar(dni);
-    if (pos != -1) {
-        Socio existente = leer(pos);
-        if (existente.get_estado()) {
-            cout << "DNI YA EXISTENTE\n";
-            return;
-        } else {
-            obj.set_dni(dni);
-            cargar(obj);
-            obj.set_estado(true);
-            modificar(obj, pos);
-            return;
-        }
-    }
-    obj.set_dni(dni);
-    cargar(obj);
-    obj.set_estado(true);
-    grabar(obj);
-}
 
 
 /// Carga
@@ -120,3 +92,32 @@ void ArchSocio::cargar(Socio &obj) {
         obj.set_email(buffer);
 }
 
+/// Registro
+void ArchSocio::registrar() {
+
+    Funciones f;
+    Socio obj;
+    char dni[10];
+    cout << "Ingrese el DNI: ";
+    f.cargar_cadena(dni, 9);
+
+    int pos = buscar(dni);
+    if (pos != -1) {
+        Socio existente = leer(pos);
+        if (existente.get_estado()) {
+            cout << "DNI YA EXISTENTE\n";
+            system("pause");
+            return;
+        } else {
+            obj.set_dni(dni);
+            cargar(obj);
+            obj.set_estado(true);
+            modificar(obj, pos);
+            return;
+        }
+    }
+    obj.set_dni(dni);
+    cargar(obj);
+    obj.set_estado(true);
+    grabar(obj);
+}
