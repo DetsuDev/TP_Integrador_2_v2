@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="include" />
 					<Add directory="include/socio" />
+					<Add directory="include/libro" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,6 +27,7 @@
 					<Add option="-O2" />
 					<Add directory="include" />
 					<Add directory="include/socio" />
+					<Add directory="include/libro" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,6 +42,10 @@
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Funciones.h" />
 		<Unit filename="include/MenuPrincipal.h" />
+		<Unit filename="include/libro/ArchLibro.h" />
+		<Unit filename="include/libro/FuncionesLibro.h" />
+		<Unit filename="include/libro/Libro.h" />
+		<Unit filename="include/libro/MenuLibro.h" />
 		<Unit filename="include/socio/ArchSocio.h" />
 		<Unit filename="include/socio/FuncionesSocio.h" />
 		<Unit filename="include/socio/MenuSocio.h" />
@@ -49,6 +55,10 @@
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/Funciones.cpp" />
 		<Unit filename="src/MenuPrincipal.cpp" />
+		<Unit filename="src/libro/ArchLibro.cpp" />
+		<Unit filename="src/libro/FuncionesLibro.cpp" />
+		<Unit filename="src/libro/Libro.cpp" />
+		<Unit filename="src/libro/MenuLibro.cpp" />
 		<Unit filename="src/socio/ArchSocio.cpp" />
 		<Unit filename="src/socio/FuncionesSocio.cpp" />
 		<Unit filename="src/socio/MenuSocio.cpp" />

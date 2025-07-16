@@ -1,7 +1,8 @@
 #include <iostream>
 
 #include "MenuPrincipal.h"
-#include "socio/MenuSocio.h"
+#include "MenuSocio.h"
+#include "MenuLibro.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {}
@@ -26,8 +27,11 @@ void MenuPrincipal::mostrar() {
             menuSocio.mostrar();
             break;
         }
-        case 2:
-            break;
+        case 2: {
+            MenuLibro menuLibro;
+            menuLibro.mostrar();
+        }
+        break;
         case 0:
             activo = false;
             break;

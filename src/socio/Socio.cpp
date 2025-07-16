@@ -2,7 +2,7 @@
 #include <cstring>
 #include "Fecha.h"
 #include "Domicilio.h"
-#include "socio/Socio.h"
+#include "Socio.h"
 using namespace std;
 
 void Socio::mostrar() {

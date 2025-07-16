@@ -1,7 +1,7 @@
 #ifndef FUNCIONESSOCIO_H
 #define FUNCIONESSOCIO_H
 
-#include "socio/Socio.h"
+#include "Socio.h"
 
 class FuncionesSocio {
 public:

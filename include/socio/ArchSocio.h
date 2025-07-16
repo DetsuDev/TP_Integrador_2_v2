@@ -1,7 +1,7 @@
 #ifndef ARCHSOCIO_H
 #define ARCHSOCIO_H
 
-#include "socio/Socio.h"
+#include "Socio.h"
 
 class ArchSocio {
 private:
