@@ -36,19 +36,23 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/domicilio.h" />
-		<Unit filename="include/fecha.h" />
-		<Unit filename="include/funciones.h" />
-		<Unit filename="include/menu.h" />
-		<Unit filename="include/socio/arch_socio.h" />
-		<Unit filename="include/socio/socio.h" />
+		<Unit filename="include/Domicilio.h" />
+		<Unit filename="include/Fecha.h" />
+		<Unit filename="include/Funciones.h" />
+		<Unit filename="include/MenuPrincipal.h" />
+		<Unit filename="include/socio/ArchSocio.h" />
+		<Unit filename="include/socio/FuncionesSocio.h" />
+		<Unit filename="include/socio/MenuSocio.h" />
+		<Unit filename="include/socio/Socio.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/domicilio.cpp" />
-		<Unit filename="src/fecha.cpp" />
-		<Unit filename="src/funciones.cpp" />
-		<Unit filename="src/menu.cpp" />
-		<Unit filename="src/socio/arch_socio.cpp" />
-		<Unit filename="src/socio/socio.cpp" />
+		<Unit filename="src/Domicilio.cpp" />
+		<Unit filename="src/Fecha.cpp" />
+		<Unit filename="src/Funciones.cpp" />
+		<Unit filename="src/MenuPrincipal.cpp" />
+		<Unit filename="src/socio/ArchSocio.cpp" />
+		<Unit filename="src/socio/FuncionesSocio.cpp" />
+		<Unit filename="src/socio/MenuSocio.cpp" />
+		<Unit filename="src/socio/Socio.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

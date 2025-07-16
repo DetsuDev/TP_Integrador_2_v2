@@ -17,11 +17,13 @@ int Fecha::get_mes() { return mes; }
 int Fecha::get_anio() { return anio; }
 
 void Fecha::cargar() {
-    cout<<"DIA: ";
-    cin>>dia;
-    cout<<"MES: ";
-    cin>>mes;
-    cout<<"ANIO: ";
-    cin>>anio;
+    cout << "Dia: ";
+    cin >> dia;
+    cout << "Mes: ";
+    cin >> mes;
+    cout << "Anio: ";
+    cin >> anio;
 }
-void Fecha::mostrar() { cout<<dia<<"/"<<mes<<"/"<<anio<<endl; }
+void Fecha::mostrar() {
+    cout << dia << "/" << mes << "/" << anio << endl;
+}

@@ -7,7 +7,7 @@ class Domicilio{
         int altura;
         char localidad[30];
         char partido[30];
-        char codigoPostal[6];
+        char codigo_postal[6];
     public:
         void cargar();
         void mostrar();
