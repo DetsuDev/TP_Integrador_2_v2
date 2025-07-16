@@ -4,7 +4,7 @@
 using namespace std;
 
 Funciones::Funciones() {}
-/// Esta funcion carga los caracteres recibidios en un vector "palabra", con el tamaño indicado en la variable "tamano".
+/// Esta funcion carga los caracteres recibidios en un vector "palabra", con el tamaÃ±o indicado en la variable "tamano".
 void Funciones::cargar_cadena( char *palabra, int tamano ) {
     int i = 0;
 
