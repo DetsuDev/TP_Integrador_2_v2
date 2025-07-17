@@ -79,14 +79,14 @@ void FuncionesLibro::buscar() {
     ArchLibro reg;
 
     char isbn[20];
-    cout << "Ingrese DNI a buscar: ";
+    cout << "Ingrese ISBN a buscar: ";
     f.cargar_cadena( isbn, 19 );
 
     int pos = reg.buscar( isbn );
     if ( pos < 0 ) {
-        cout << "DNI no encontrado.\n";
+        cout << "ISBN no encontrado.\n";
     } else {
-        cout << "DNI encontrado!: \n";
+        cout << "ISBN encontrado!: \n";
         Libro obj = reg.leer( pos );
         obj.mostrar();
     }
@@ -97,7 +97,7 @@ void FuncionesLibro::eliminar() {
     Funciones f;
     ArchLibro reg;
     char isbn[20];
-    cout << "Ingrese DNI a eliminar: ";
+    cout << "Ingrese ISBN a eliminar: ";
     f.cargar_cadena( isbn, 19 );
 
     int pos = reg.buscar( isbn );

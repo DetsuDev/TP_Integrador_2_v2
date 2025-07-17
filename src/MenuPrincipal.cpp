@@ -3,6 +3,7 @@
 #include "MenuPrincipal.h"
 #include "MenuSocio.h"
 #include "MenuLibro.h"
+#include "MenuPrestamo.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {}
@@ -31,12 +32,17 @@ void MenuPrincipal::mostrar() {
             MenuLibro menuLibro;
             menuLibro.mostrar();
         }
+        case 3: {
+            MenuPrestamo menuPrest;
+            menuPrest.mostrar();
+        }
         break;
         case 0:
             activo = false;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
+            system("pause");
         }
     }
 }

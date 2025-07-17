@@ -16,6 +16,7 @@
 					<Add directory="include" />
 					<Add directory="include/socio" />
 					<Add directory="include/libro" />
+					<Add directory="include/prestamo" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -28,6 +29,7 @@
 					<Add directory="include" />
 					<Add directory="include/socio" />
 					<Add directory="include/libro" />
+					<Add directory="include/prestamo" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -46,6 +48,10 @@
 		<Unit filename="include/libro/FuncionesLibro.h" />
 		<Unit filename="include/libro/Libro.h" />
 		<Unit filename="include/libro/MenuLibro.h" />
+		<Unit filename="include/prestamo/ArchPrestamo.h" />
+		<Unit filename="include/prestamo/FuncionesPrestamo.h" />
+		<Unit filename="include/prestamo/MenuPrestamo.h" />
+		<Unit filename="include/prestamo/Prestamo.h" />
 		<Unit filename="include/socio/ArchSocio.h" />
 		<Unit filename="include/socio/FuncionesSocio.h" />
 		<Unit filename="include/socio/MenuSocio.h" />
@@ -59,6 +65,10 @@
 		<Unit filename="src/libro/FuncionesLibro.cpp" />
 		<Unit filename="src/libro/Libro.cpp" />
 		<Unit filename="src/libro/MenuLibro.cpp" />
+		<Unit filename="src/prestamo/ArchPrestamo.cpp" />
+		<Unit filename="src/prestamo/FuncionesPrestamo.cpp" />
+		<Unit filename="src/prestamo/MenuPrestamo.cpp" />
+		<Unit filename="src/prestamo/Prestamo.cpp" />
 		<Unit filename="src/socio/ArchSocio.cpp" />
 		<Unit filename="src/socio/FuncionesSocio.cpp" />
 		<Unit filename="src/socio/MenuSocio.cpp" />
