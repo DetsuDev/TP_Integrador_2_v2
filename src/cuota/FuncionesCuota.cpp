@@ -143,6 +143,17 @@ void FuncionesCuota::eliminar() {
     cout << "Ingrese DNI de la cuota a eliminar: ";
     f.cargar_cadena( dni, 9 );
 
+    Cuota obj;
+    int cant_reg = reg.contar();
+    for(int i = 0; i < cant_reg; i++){
+        obj = reg.leer(i);
+        if((obj.get_estado() == true) && (strcmp(dni,obj.get_dni()) == 0)){
+            cout << endl;
+            obj.mostrar();
+        }
+    }
+
+
     cout << "Ingrese el mes: ";
     int mes;
     cin >> mes;
