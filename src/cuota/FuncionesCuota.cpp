@@ -63,12 +63,6 @@ void FuncionesCuota::registrar() {
 
     if ( pos_cuot != -1 ) {
         Cuota existenteCuot = regCuot.leer( pos_cuot );
-        cout << "\nDEBUG:\n";
-        cout << "Cuota encontrada en posici�n: " << pos_cuot << endl;
-        cout << "DNI: " << existenteCuot.get_dni() << endl;
-        cout << "Mes: " << existenteCuot.get_mes() << endl;
-        cout << "Anio: " << existenteCuot.get_anio() << endl;
-        cout << "Estado: " << existenteCuot.get_estado() << endl;
         if ( existenteCuot.get_estado() ) {
             cout << "Cuota ya pagada.\n";
             system( "pause" );
