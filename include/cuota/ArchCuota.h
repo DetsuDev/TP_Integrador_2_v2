@@ -4,6 +4,7 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 class ArchCuota
 {
     public:
@@ -14,6 +15,8 @@ class ArchCuota
 
     private:
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 #include "Cuota.h"
@@ -29,6 +32,9 @@ public:
     int contar();
     int buscar( const char* dni, int mes, int anio );
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

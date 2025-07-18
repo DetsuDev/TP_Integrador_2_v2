@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #include <iostream>
 using namespace std;
 #include "MenuCuota.h"
@@ -13,6 +14,8 @@ MenuCuota::~MenuCuota()
 {
     //dtor
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 #include "FuncionesCuota.h"
@@ -66,6 +69,9 @@ void MenuCuota::mostrar() {
         }
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
