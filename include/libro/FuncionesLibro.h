@@ -11,9 +11,6 @@ public:
     void listar();
     void buscar();
     void eliminar();
-protected:
-
-private:
 };
 
 

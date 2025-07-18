@@ -4,7 +4,7 @@
 
 class Prestamo {
 private:
-    bool estado;
+    bool estado = false;
     int id_prestamo;
     char isbn[20];
     char titulo[50];

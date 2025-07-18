@@ -16,7 +16,7 @@ void MenuSocio::mostrar() {
         cout << "[2] Listar Socios\n";
         cout << "[3] Buscar Socio\n";
         cout << "[4] Eliminar Socio\n";
-        cout << "[0] Salir\n";
+        cout << "[0] Volver\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
         FuncionesSocio funcSoc;
@@ -45,6 +45,7 @@ void MenuSocio::mostrar() {
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
+            system("pause");
         }
     }
 }

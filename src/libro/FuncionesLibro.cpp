@@ -64,11 +64,16 @@ void FuncionesLibro::listar() {
     ArchLibro reg;
     int cant_reg = reg.contar();
 
-    for ( int i = 0; i < cant_reg; i++ ) {
-        obj = reg.leer( i );
-        if ( obj.get_estado() ) {
-            obj.mostrar();
+    if ( cant_reg < 1 ) {
+        cout << "NO HAY DATOS.\n";
+    } else {
+        for ( int i = 0; i < cant_reg; i++ ) {
+            obj = reg.leer( i );
+            if ( obj.get_estado() ) {
+                obj.mostrar();
+            }
         }
+
     }
 
 }
@@ -112,7 +117,9 @@ void FuncionesLibro::eliminar() {
                 reg.modificar( obj, pos );
                 cout << "Libro Eliminado.\n";
             }
-        }
+        }else {
+        cout << "ISBN inactivo!\n";
+    }
     } else {
         cout << "ISBN no encontrado!\n";
     }

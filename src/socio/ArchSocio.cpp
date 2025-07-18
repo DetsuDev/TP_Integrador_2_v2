@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-#include "socio/ArchSocio.h"
-#include "socio/Socio.h"
+#include "ArchSocio.h"
+#include "Socio.h"
 #include "Funciones.h"
 
 using namespace std;
@@ -64,4 +64,3 @@ int ArchSocio::contar() {
     fclose( p );
     return tam / sizeof ( Socio );
 }
-

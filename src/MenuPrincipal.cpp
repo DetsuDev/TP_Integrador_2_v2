@@ -4,6 +4,7 @@
 #include "MenuSocio.h"
 #include "MenuLibro.h"
 #include "MenuPrestamo.h"
+#include "MenuCuota.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {}
@@ -31,10 +32,17 @@ void MenuPrincipal::mostrar() {
         case 2: {
             MenuLibro menuLibro;
             menuLibro.mostrar();
+            break;
         }
         case 3: {
             MenuPrestamo menuPrest;
             menuPrest.mostrar();
+            break;
+        }
+        case 4: {
+            MenuCuota menuCuota;
+            menuCuota.mostrar();
+            break;
         }
         break;
         case 0:

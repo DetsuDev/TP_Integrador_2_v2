@@ -16,7 +16,7 @@ void MenuLibro::mostrar() {
         cout << "[2] Listar Libro\n";
         cout << "[3] Buscar Libro\n";
         cout << "[4] Eliminar Libro\n";
-        cout << "[0] Salir\n";
+        cout << "[0] Volver\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
         FuncionesLibro funcLibro;
@@ -45,6 +45,7 @@ void MenuLibro::mostrar() {
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
+            system("pause");
         }
     }
 }

@@ -36,43 +36,48 @@ void FuncionesPrestamo::registrar() {
     Funciones f;
 
     Libro libro;
-    ArchLibro reg_libro;
+    ArchLibro regLibro;
 
     Socio socio;
-    ArchSocio reg_socio;
+    ArchSocio regSocio;
 
     Prestamo prest;
-    ArchPrestamo reg_prest;
+    ArchPrestamo regPrest;
 
     char isbn[20];
     cout << "Ingrese el ISBN: ";
     f.cargar_cadena( isbn, 19 );
-    int pos_libro = reg_libro.buscar( isbn );
-    if ( pos_libro != -1 ) {
-        Libro existente_libro = reg_libro.leer( pos_libro );
-        if ( existente_libro.get_estado() ) {
+
+    int pos_libro = regLibro.buscar( isbn ); /// Busca el libro en el registro
+    if ( pos_libro != -1 ) { /// Verifica que exista
+        Libro existente_libro = regLibro.leer( pos_libro ); /// Guarda para su lectura de estado
+        if ( existente_libro.get_estado() ) { /// Si existe y esta activo, continua
             char dni[10];
             cout << "Ingrese el DNI: ";
             f.cargar_cadena( dni, 9 );
-            int pos_socio = reg_socio.buscar( dni );
-            if ( pos_socio != -1 ) {
-                Socio existente_socio = reg_socio.leer ( pos_socio );
-                if ( existente_socio.get_estado() ) {
+            int pos_socio = regSocio.buscar( dni ); /// Busca el socio en el registro
+            if ( pos_socio != -1 ) { /// Verifica que exista
+                Socio existente_socio = regSocio.leer ( pos_socio ); /// Guarda para su lectura de estado
+                if ( existente_socio.get_estado() ) { // Si existe y esta activo, continua
                     cargar( prest );
                     srand( time( 0 ) );
                     prest.set_id_prestamo( rand() % 100000 + 1 );
-                    libro.set_c_ejemplares( libro.get_c_ejemplares() - 1 );
+                    existente_libro.set_c_ejemplares( existente_libro.get_c_ejemplares() - 1 );
                     prest.set_isbn( isbn );
-                    prest.set_titulo( libro.get_titulo() );
+                    prest.set_titulo( existente_libro.get_titulo() );
                     prest.set_dni( dni );
                     prest.set_estado( true );
-                    reg_prest.grabar( prest );
+                    regPrest.grabar( prest );
                 }
+                cout << "Socio Inactivo\n";
+                system( "pause" );
             } else {
                 cout << "Socio Inexistente\n";
                 system( "pause" );
             }
         }
+        cout << "Libro Inactivo\n";
+        system( "pause" );
     } else {
         cout << "Libro Inexistente\n";
         system( "pause" );
@@ -85,11 +90,16 @@ void FuncionesPrestamo::listar() {
     ArchPrestamo reg;
     int cant_reg = reg.contar();
 
-    for ( int i = 0; i < cant_reg; i++ ) {
-        obj = reg.leer( i );
-        if ( obj.get_estado() ) {
-            obj.mostrar();
+    if ( cant_reg < 1 ) {
+        cout << "NO HAY DATOS.\n";
+    } else {
+        for ( int i = 0; i < cant_reg; i++ ) {
+            obj = reg.leer( i );
+            if ( obj.get_estado() ) {
+                obj.mostrar();
+            }
         }
+
     }
 
 }

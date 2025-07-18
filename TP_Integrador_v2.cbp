@@ -49,7 +49,10 @@
 		<Unit filename="include/cuota/Cuota.h" />
 		<Unit filename="include/cuota/FuncionesCuota.h" />
 		<Unit filename="include/cuota/MenuCuota.h" />
+<<<<<<< Updated upstream
 		<Unit filename="include/fecha.h" />
+=======
+>>>>>>> Stashed changes
 		<Unit filename="include/libro/ArchLibro.h" />
 		<Unit filename="include/libro/FuncionesLibro.h" />
 		<Unit filename="include/libro/Libro.h" />

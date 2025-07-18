@@ -18,9 +18,9 @@ void FuncionesSocio::cargar( Socio &obj ) {
     f.cargar_cadena( buffer, 29 );
     obj.set_apellido( buffer );
     cout << "Ingrese la fecha de nacimiento: " << endl;
-    Fecha fnac;
-    fnac.cargar();
-    obj.set_fecha_nac( fnac );
+    Fecha fNac;
+    fNac.cargar();
+    obj.set_fecha_nac( fNac );
     cout << "Ingrese el email: ";
     f.cargar_cadena( buffer, 39 );
     obj.set_email( buffer );
@@ -67,11 +67,16 @@ void FuncionesSocio::listar() {
     ArchSocio reg;
     int cant_reg = reg.contar();
 
-    for ( int i = 0; i < cant_reg; i++ ) {
-        obj = reg.leer( i );
-        if ( obj.get_estado() ) {
-            obj.mostrar();
+    if ( cant_reg < 1 ) {
+        cout << "NO HAY DATOS.\n";
+    } else {
+        for ( int i = 0; i < cant_reg; i++ ) {
+            obj = reg.leer( i );
+            if ( obj.get_estado() ) {
+                obj.mostrar();
+            }
         }
+
     }
 
 }
@@ -88,6 +93,7 @@ void FuncionesSocio::buscar() {
     int pos = reg.buscar( dni );
     if ( pos < 0 ) {
         cout << "DNI no encontrado.\n";
+        system( "pause" );
     } else {
         cout << "DNI encontrado!: \n";
         Socio obj = reg.leer( pos );

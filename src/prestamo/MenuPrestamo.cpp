@@ -16,7 +16,7 @@ void MenuPrestamo::mostrar() {
         cout << "[2] Listar Prestamos\n";
         cout << "[3] Buscar Prestamo\n";
         cout << "[4] Eliminar Prestamo\n";
-        cout << "[0] Salir\n";
+        cout << "[0] Volver\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
         FuncionesPrestamo funcPrest;
@@ -45,6 +45,7 @@ void MenuPrestamo::mostrar() {
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
+            system("pause");
         }
     }
 }

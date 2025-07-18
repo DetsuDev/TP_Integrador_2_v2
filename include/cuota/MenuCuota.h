@@ -6,7 +6,11 @@ class MenuCuota
 {
     public:
         MenuCuota();
+<<<<<<< Updated upstream
         virtual ~MenuCuota();
+=======
+        void mostrar();
+>>>>>>> Stashed changes
 
     protected:
 
