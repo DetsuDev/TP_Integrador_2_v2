@@ -1,5 +1,5 @@
-#ifndef FUNCIONESCUOTA_H
-#define FUNCIONESCUOTA_H
+#ifndef CUOTA_H
+#define CUOTA_H
 
 #include "Fecha.h"
 
@@ -30,5 +30,7 @@ public:
 
     /// Funciones
     void mostrar();
-}
+
+};
+
 #endif // CUOTA_H

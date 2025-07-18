@@ -1,5 +1,6 @@
-#ifndef FUNCIONESCUOTA_H
-#define FUNCIONESCUOTA_H
+#ifndef ARCHCUOTA_H
+#define ARCHCUOTA_H
+
 
 #include "Cuota.h"
 

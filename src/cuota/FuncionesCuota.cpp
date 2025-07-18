@@ -64,7 +64,7 @@ void FuncionesCuota::registrar() {
     if ( pos_cuot != -1 ) {
         Cuota existenteCuot = regCuot.leer( pos_cuot );
         cout << "\nDEBUG:\n";
-        cout << "Cuota encontrada en posición: " << pos_cuot << endl;
+        cout << "Cuota encontrada en posiciï¿½n: " << pos_cuot << endl;
         cout << "DNI: " << existenteCuot.get_dni() << endl;
         cout << "Mes: " << existenteCuot.get_mes() << endl;
         cout << "Anio: " << existenteCuot.get_anio() << endl;
@@ -177,4 +177,5 @@ void FuncionesCuota::eliminar() {
         cout << "Cuota no encontrado!\n";
     }
     system( "pause" );
+
 }
