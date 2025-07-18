@@ -2,6 +2,10 @@
 #define FUNCIONESCUOTA_H
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+#include "Cuota.h"
+>>>>>>> Stashed changes
 =======
 #include "Cuota.h"
 >>>>>>> Stashed changes
@@ -10,6 +14,7 @@ class FuncionesCuota
 {
     public:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         FuncionesCuota();
         virtual ~FuncionesCuota();
 
@@ -17,12 +22,17 @@ class FuncionesCuota
 
     private:
 =======
+=======
+>>>>>>> Stashed changes
     FuncionesCuota();
     void cargar( Cuota &obj );
     void registrar();
     void listar();
     void buscar();
     void eliminar();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 

@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #include <iostream>
 using namespace std;
 #include "FuncionesCuota.h"
@@ -12,6 +13,8 @@ FuncionesCuota::~FuncionesCuota()
 {
     //dtor
 =======
+=======
+>>>>>>> Stashed changes
 #include "FuncionesCuota.h"
 #include "ArchCuota.h"
 #include "Cuota.h"
@@ -192,5 +195,8 @@ void FuncionesCuota::eliminar() {
     }
     system( "pause" );
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

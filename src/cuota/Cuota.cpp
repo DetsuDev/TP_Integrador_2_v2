@@ -1,5 +1,6 @@
 #include <iostream>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using namespace std;
 #include "Cuota.h"
 
@@ -13,6 +14,8 @@ Cuota::~Cuota()
     //dtor
 }
 =======
+=======
+>>>>>>> Stashed changes
 #include <cstring>
 #include "Cuota.h"
 
@@ -44,4 +47,7 @@ int Cuota::get_mes() { return mes; }
 int Cuota::get_anio() { return anio; }
 float Cuota::get_importe() { return importe; }
 Fecha Cuota::get_fecha_pago() { return fecha_pago; }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

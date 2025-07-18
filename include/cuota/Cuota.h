@@ -2,6 +2,7 @@
 #define CUOTA_H
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 class Cuota
 {
@@ -12,6 +13,8 @@ class Cuota
 
     private:
 =======
+=======
+>>>>>>> Stashed changes
 #include "Fecha.h"
 
 class Cuota {
@@ -42,6 +45,9 @@ public:
     /// Funciones
     void mostrar();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 

@@ -1,5 +1,6 @@
 #include <iostream>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using namespace std;
 
 #include "ArchCuota.h"
@@ -14,6 +15,8 @@ ArchCuota::~ArchCuota()
     //dtor
 }
 =======
+=======
+>>>>>>> Stashed changes
 #include <cstring>
 #include "ArchCuota.h"
 #include "Cuota.h"
@@ -80,4 +83,7 @@ int ArchCuota::contar() {
     return tam / sizeof ( Cuota );
 }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

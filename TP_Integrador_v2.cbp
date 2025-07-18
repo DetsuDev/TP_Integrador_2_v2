@@ -50,7 +50,10 @@
 		<Unit filename="include/cuota/FuncionesCuota.h" />
 		<Unit filename="include/cuota/MenuCuota.h" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		<Unit filename="include/fecha.h" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 		<Unit filename="include/libro/ArchLibro.h" />

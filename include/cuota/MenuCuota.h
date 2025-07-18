@@ -7,7 +7,11 @@ class MenuCuota
     public:
         MenuCuota();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         virtual ~MenuCuota();
+=======
+        void mostrar();
+>>>>>>> Stashed changes
 =======
         void mostrar();
 >>>>>>> Stashed changes
