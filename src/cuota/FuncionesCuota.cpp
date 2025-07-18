@@ -1,23 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-#include <iostream>
-using namespace std;
-#include "FuncionesCuota.h"
-
-FuncionesCuota::FuncionesCuota()
-{
-    //ctor
-}
-
-FuncionesCuota::~FuncionesCuota()
-{
-    //dtor
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 #include "FuncionesCuota.h"
 #include "ArchCuota.h"
 #include "Cuota.h"
@@ -197,12 +177,4 @@ void FuncionesCuota::eliminar() {
         cout << "Cuota no encontrado!\n";
     }
     system( "pause" );
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }

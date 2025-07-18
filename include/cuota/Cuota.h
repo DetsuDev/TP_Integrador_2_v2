@@ -1,23 +1,6 @@
-#ifndef CUOTA_H
-#define CUOTA_H
+#ifndef FUNCIONESCUOTA_H
+#define FUNCIONESCUOTA_H
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-class Cuota
-{
-    public:
-        Cuota();
-
-    protected:
-
-    private:
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 #include "Fecha.h"
 
 class Cuota {
@@ -47,14 +30,5 @@ public:
 
     /// Funciones
     void mostrar();
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-};
-
+}
 #endif // CUOTA_H
