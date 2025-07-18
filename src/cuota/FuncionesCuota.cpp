@@ -154,10 +154,10 @@ void FuncionesCuota::eliminar() {
     }
 
 
-    cout << "Ingrese el mes: ";
+    cout << "Ingrese el mes de la cuota a eliminar: ";
     int mes;
     cin >> mes;
-    cout << "Ingrese el anio: ";
+    cout << "Ingrese el anio de la cuota a eliminar: ";
     int anio;
     cin >> anio;
 
@@ -171,7 +171,7 @@ void FuncionesCuota::eliminar() {
             if ( opc == 'S' || opc == 's' ) {
                 obj.set_estado( false );
                 reg.modificar( obj, pos );
-                cout << "Cuota Eliminado.\n";
+                cout << "Cuota Eliminada.\n";
             } else {
                 cout << "Operacion cancelada.\n";
             }
@@ -179,7 +179,7 @@ void FuncionesCuota::eliminar() {
             cout << "Cuota inactiva!\n";
         }
     } else {
-        cout << "Cuota no encontrado!\n";
+        cout << "Cuota no encontrada!\n";
     }
     system( "pause" );
 
