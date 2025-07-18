@@ -6,9 +6,9 @@ Objeto Cuota: Numero de Socio, Fecha de pago, Importe, Mes, Año, Importe. <br>
 COSAS A HACER: <br>
 
 Socio (cargar, listar, buscar dni, eliminar) ✔ <br>
-Libro (cargar, listar, buscar isbn, eliminar) <br>
-Prestamo (cargar, listar, buscar n_prestamo, eliminar) <br>
-Cuota (cargar, listar, buscar n_cuota, eliminar) <br>
+Libro (cargar, listar, buscar isbn, eliminar) ✔ <br>
+Prestamo (cargar, listar, buscar n_prestamo, eliminar) ✔ <br>
+Cuota (cargar, listar, buscar dni, mes, anio, eliminar) ✔ <br>
 
 NO PERMITIR ELIMINAR UN LIBRO SI TIENE UN PRESTAMO ACTIVO SOCIOS <br>
 AGREGAR DEUDA SI SE VUELVE A CARGAR EL MISMO DNI <br>
