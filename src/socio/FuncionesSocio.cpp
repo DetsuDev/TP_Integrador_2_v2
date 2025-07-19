@@ -113,6 +113,7 @@ void FuncionesSocio::eliminar() {
     if ( pos != -1 ) {
         Socio obj = reg.leer( pos );
         if ( obj.get_estado() ) {
+            cout << obj.get_apellido() << ", " << obj.get_nombre() << endl;
             cout << "Eliminar este socio? (s/N): ";
             char opc;
             cin >> opc;
