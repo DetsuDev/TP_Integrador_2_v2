@@ -8,7 +8,8 @@ using namespace std;
 FuncionesSocio::FuncionesSocio() {}
 
 /// Carga
-void FuncionesSocio::cargar( Socio &obj ) {
+void FuncionesSocio::cargar( Socio &obj )
+{
     Funciones f;
     char buffer[40];
     cout << "Ingrese el nombre: ";
@@ -31,7 +32,8 @@ void FuncionesSocio::cargar( Socio &obj ) {
 }
 
 /// Registro
-void FuncionesSocio::registrar() {
+void FuncionesSocio::registrar()
+{
 
     Funciones f;
     Socio obj;
@@ -41,13 +43,17 @@ void FuncionesSocio::registrar() {
     f.cargar_cadena( dni, 9 );
 
     int pos = reg.buscar( dni );
-    if ( pos != -1 ) {
+    if ( pos != -1 )
+    {
         Socio existente = reg.leer( pos );
-        if ( existente.get_estado() ) {
+        if ( existente.get_estado() )
+        {
             cout << "DNI YA EXISTENTE\n";
             system( "pause" );
             return;
-        } else {
+        }
+        else
+        {
             obj.set_dni( dni );
             cargar( obj );
             obj.set_estado( true );
@@ -62,17 +68,23 @@ void FuncionesSocio::registrar() {
 }
 
 /// Listado
-void FuncionesSocio::listar() {
+void FuncionesSocio::listar()
+{
     Socio obj;
     ArchSocio reg;
     int cant_reg = reg.contar();
 
-    if ( cant_reg < 1 ) {
+    if ( cant_reg < 1 )
+    {
         cout << "NO HAY DATOS.\n";
-    } else {
-        for ( int i = 0; i < cant_reg; i++ ) {
+    }
+    else
+    {
+        for ( int i = 0; i < cant_reg; i++ )
+        {
             obj = reg.leer( i );
-            if ( obj.get_estado() ) {
+            if ( obj.get_estado() )
+            {
                 obj.mostrar();
             }
         }
@@ -82,7 +94,8 @@ void FuncionesSocio::listar() {
 }
 
 /// Buscar
-void FuncionesSocio::buscar() {
+void FuncionesSocio::buscar()
+{
     Funciones f;
     ArchSocio reg;
 
@@ -91,10 +104,13 @@ void FuncionesSocio::buscar() {
     f.cargar_cadena( dni, 9 );
 
     int pos = reg.buscar( dni );
-    if ( pos < 0 ) {
+    if ( pos < 0 )
+    {
         cout << "DNI no encontrado.\n";
         system( "pause" );
-    } else {
+    }
+    else
+    {
         cout << "DNI encontrado!: \n";
         Socio obj = reg.leer( pos );
         obj.mostrar();
@@ -102,7 +118,8 @@ void FuncionesSocio::buscar() {
 }
 
 /// Eliminar
-void FuncionesSocio::eliminar() {
+void FuncionesSocio::eliminar()
+{
     Funciones f;
     ArchSocio reg;
     char dni[10];
@@ -110,20 +127,25 @@ void FuncionesSocio::eliminar() {
     f.cargar_cadena( dni, 9 );
 
     int pos = reg.buscar( dni );
-    if ( pos != -1 ) {
+    if ( pos != -1 )
+    {
         Socio obj = reg.leer( pos );
-        if ( obj.get_estado() ) {
+        if ( obj.get_estado() )
+        {
             cout << obj.get_apellido() << ", " << obj.get_nombre() << endl;
             cout << "Eliminar este socio? (s/N): ";
             char opc;
             cin >> opc;
-            if ( opc == 'S' || opc == 's' ) {
+            if ( opc == 'S' || opc == 's' )
+            {
                 obj.set_estado( false );
                 reg.modificar( obj, pos );
                 cout << "Socio Eliminado.\n";
             }
         }
-    } else {
+    }
+    else
+    {
         cout << "Dni no encontrado!\n";
     }
 }
