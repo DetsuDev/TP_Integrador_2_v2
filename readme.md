@@ -10,10 +10,7 @@ Libro (cargar, listar, buscar isbn, eliminar) ✔ <br>
 Prestamo (cargar, listar, buscar n_prestamo, eliminar) ✔ <br>
 Cuota (cargar, listar, buscar dni, mes, anio, eliminar) ✔ <br>
 
-NO PERMITIR ELIMINAR UN LIBRO SI TIENE UN PRESTAMO ACTIVO SOCIOS <br>
-AGREGAR DEUDA SI SE VUELVE A CARGAR EL MISMO DNI <br>
-CALCULAR CUANTAS CUOTAS DEBE Y EL IMPORTE <br>
-SOLICITUD POR NOMBRE Y CUOTAS <br>
+NO PERMITIR ELIMINAR UN LIBRO SI TIENE UN PRESTAMO ACTIVO SOCIOS <br> ✔
 
 CLASES/ARCHIVOS: PascalCase <br>
 OBJETOS: camelCase <br>
