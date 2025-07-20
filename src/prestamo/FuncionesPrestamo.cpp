@@ -126,6 +126,7 @@ void FuncionesPrestamo::buscar() {
 void FuncionesPrestamo::eliminar() {
     Funciones f;
     ArchPrestamo reg;
+    listar();
     int id_prestamo;
     cout << "Ingrese Id del prestamo a eliminar: ";
     cin >> id_prestamo;

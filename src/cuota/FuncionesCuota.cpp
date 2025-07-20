@@ -31,7 +31,6 @@ void FuncionesCuota::registrar() {
     Cuota cuota;
     ArchCuota regCuot;
 
-    Socio socio;
     ArchSocio regSoc;
 
     char dni[10];
@@ -75,6 +74,8 @@ void FuncionesCuota::registrar() {
         cuota.set_anio( anio );
         cuota.set_estado( true );
         regCuot.modificar( cuota, pos_cuot );
+        //existenteSoc.set_deuda( existenteSoc.get_deuda() + cuota.get_importe());
+        //regSoc.modificar(existenteSoc, pos_soc);
         return;
     }
     cargar( cuota );
@@ -83,6 +84,8 @@ void FuncionesCuota::registrar() {
     cuota.set_anio( anio );
     cuota.set_estado( true );
     regCuot.grabar( cuota );
+    //existenteSoc.set_deuda( existenteSoc.get_deuda() + cuota.get_importe());
+    //regSoc.modificar(existenteSoc, pos_soc);
 
 }
 
@@ -90,6 +93,8 @@ void FuncionesCuota::registrar() {
 /// Listado
 void FuncionesCuota::listar() {
     Cuota obj;
+    Socio socio;
+    ArchSocio regSocio;
     ArchCuota reg;
     int cant_reg = reg.contar();
 
@@ -98,8 +103,12 @@ void FuncionesCuota::listar() {
     } else {
         for ( int i = 0; i < cant_reg; i++ ) {
             obj = reg.leer( i );
-            if ( obj.get_estado() ) {
+            if ( obj.get_estado()) {
                 obj.mostrar();
+                //if ((strcmp(socio.get_dni(),obj.get_dni()) == 0)){
+
+                //cout << "Deuda: " << socio.get_deuda() << endl;
+                //}
             }
         }
 
@@ -112,11 +121,16 @@ void FuncionesCuota::buscar() {
     Funciones f;
     ArchCuota reg;
 
+    ArchSocio regSoc;
+
     char dni[10];
     cout << "Ingrese DNI a buscar: ";
     f.cargar_cadena( dni, 9 );
 
-    int mes;
+    int pos_socio = regSoc.buscar(dni);
+    Socio socio = regSoc.leer(pos_socio);
+    if (pos_socio != -1) {
+        int mes;
     cout << "Ingrese el mes: ";
     cin >> mes;
 
@@ -133,12 +147,19 @@ void FuncionesCuota::buscar() {
         Cuota obj = reg.leer( pos );
         obj.mostrar();
     }
+    } else {
+    cout << "DNI no encontrado.\n";
+    }
+
+
+
 }
 
 /// Eliminar
 void FuncionesCuota::eliminar() {
     Funciones f;
     ArchCuota reg;
+    ArchSocio regSocio;
     char dni[10];
     cout << "Ingrese DNI de la cuota a eliminar: ";
     f.cargar_cadena( dni, 9 );
@@ -170,6 +191,10 @@ void FuncionesCuota::eliminar() {
             cin >> opc;
             if ( opc == 'S' || opc == 's' ) {
                 obj.set_estado( false );
+                /*int pos_socio = regSocio.buscar(dni);
+                Socio socio = regSocio.leer (pos_socio);
+                socio.set_deuda( socio.get_deuda() - obj.get_importe());
+                regSocio.modificar (socio, pos_socio);*/
                 reg.modificar( obj, pos );
                 cout << "Cuota Eliminada.\n";
             } else {

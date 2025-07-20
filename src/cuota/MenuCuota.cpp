@@ -39,6 +39,7 @@ void MenuCuota::mostrar() {
         case 4:
             system( "cls" );
             funcCuot.eliminar();
+            system( "pause" );
             break;
         case 0:
             return;

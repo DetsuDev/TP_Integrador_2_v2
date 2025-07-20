@@ -39,6 +39,7 @@ void MenuPrestamo::mostrar() {
         case 4:
             system( "cls" );
             funcPrest.eliminar();
+            system( "pause" );
             break;
         case 0:
             return;

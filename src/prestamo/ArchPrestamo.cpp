@@ -30,6 +30,7 @@ Prestamo ArchPrestamo::leer( int pos ) {
     return obj;
 }
 
+
 int ArchPrestamo::buscar( int id_prestamo ) {
     Prestamo obj;
     int cantReg = contar();

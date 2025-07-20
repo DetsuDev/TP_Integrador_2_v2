@@ -39,6 +39,7 @@ void MenuLibro::mostrar() {
         case 4:
             system( "cls" );
             funcLibro.eliminar();
+            system( "pause" );
             break;
         case 0:
             return;

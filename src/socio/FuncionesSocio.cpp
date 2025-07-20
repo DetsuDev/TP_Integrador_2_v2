@@ -107,7 +107,6 @@ void FuncionesSocio::buscar()
     if ( pos < 0 )
     {
         cout << "DNI no encontrado.\n";
-        system( "pause" );
     }
     else
     {
@@ -122,6 +121,7 @@ void FuncionesSocio::eliminar()
 {
     Funciones f;
     ArchSocio reg;
+    listar();
     char dni[10];
     cout << "Ingrese DNI a eliminar: ";
     f.cargar_cadena( dni, 9 );

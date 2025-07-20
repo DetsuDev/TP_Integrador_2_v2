@@ -39,6 +39,7 @@ void MenuSocio::mostrar() {
         case 4:
             system( "cls" );
             funcSoc.eliminar();
+            system( "pause" );
             break;
         case 0:
             return;

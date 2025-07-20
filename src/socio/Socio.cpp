@@ -14,6 +14,7 @@ void Socio::mostrar() {
     cout << "Email: " << email << endl;
     cout << "Domicilio: \n";
     domicilio.mostrar();
+    //cout << "Deuda: " << deuda << endl;
     cout << "---------------------------------------------------------------------\n";
 }
 
@@ -26,6 +27,7 @@ void Socio::set_apellido(const char *e) { strcpy(apellido, e); }
 void Socio::set_fecha_nac(Fecha f) { fecha_nac = f; }
 void Socio::set_email(const char *e) { strcpy(email, e); }
 void Socio::set_domicilio(Domicilio d) { domicilio = d; }
+//void Socio::set_deuda(float d) { deuda = d; }
 
 /// Getters
 bool Socio::get_estado() { return estado; }
@@ -35,3 +37,4 @@ const char* Socio::get_apellido() { return apellido; }
 Fecha Socio::get_fecha_nac() { return fecha_nac; }
 const char* Socio::get_email() { return email; }
 Domicilio Socio::get_domicilio() { return domicilio; }
+//float Socio::get_deuda() {return deuda; }

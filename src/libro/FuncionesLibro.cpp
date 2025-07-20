@@ -1,6 +1,8 @@
 #include "FuncionesLibro.h"
 #include "ArchLibro.h"
 #include "Libro.h"
+#include "Prestamo.h"
+#include "ArchPrestamo.h"
 #include "Funciones.h"
 #include <iostream>
 #include <cstring>
@@ -101,7 +103,9 @@ void FuncionesLibro::buscar() {
 void FuncionesLibro::eliminar() {
     Funciones f;
     ArchLibro reg;
+    ArchPrestamo regPrest;
     char isbn[20];
+    listar();
     cout << "Ingrese ISBN a eliminar: ";
     f.cargar_cadena( isbn, 19 );
 
@@ -109,17 +113,27 @@ void FuncionesLibro::eliminar() {
     if ( pos != -1 ) {
         Libro obj = reg.leer( pos );
         if ( obj.get_estado() ) {
-            cout << "Eliminar este Libro? (s/N): ";
-            char opc;
-            cin >> opc;
-            if ( opc == 'S' || opc == 's' ) {
-                obj.set_estado( false );
-                reg.modificar( obj, pos );
-                cout << "Libro Eliminado.\n";
+            int pos_prest = reg.buscar( isbn );
+            if ( pos_prest != -1 ) {
+                Prestamo prest = regPrest.leer( pos_prest );
+                if ( prest.get_estado() && (strcmp(isbn,prest.get_isbn()) == 0)) {
+                    cout << "Este libro no puede ser eliminado porque tiene un prestamo activo:\n";
+                    prest.mostrar();
+                }
+            } else {
+
+                cout << "Eliminar este Libro? (s/N): ";
+                char opc;
+                cin >> opc;
+                if ( opc == 'S' || opc == 's' ) {
+                    obj.set_estado( false );
+                    reg.modificar( obj, pos );
+                    cout << "Libro Eliminado.\n";
+                }
             }
-        }else {
-        cout << "ISBN inactivo!\n";
-    }
+        } else {
+            cout << "ISBN inactivo!\n";
+        }
     } else {
         cout << "ISBN no encontrado!\n";
     }
