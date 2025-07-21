@@ -20,6 +20,7 @@ void MenuPrincipal::mostrar() {
         cout << "[2] Gestionar Libros\n";
         cout << "[3] Gestionar Prestamos\n";
         cout << "[4] Gestionar Cuotas\n";
+        cout << "[5] Generar Backup\n";
         cout << "[0] Salir\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
@@ -43,6 +44,9 @@ void MenuPrincipal::mostrar() {
             MenuCuota menuCuota;
             menuCuota.mostrar();
             break;
+        }
+        case 5: {
+
         }
         break;
         case 0:

@@ -45,20 +45,11 @@
 		<Unit filename="include/Domicilio.h" />
 		<Unit filename="include/Funciones.h" />
 		<Unit filename="include/MenuPrincipal.h" />
+		<Unit filename="include/backup/Backup.h" />
 		<Unit filename="include/cuota/ArchCuota.h" />
 		<Unit filename="include/cuota/Cuota.h" />
 		<Unit filename="include/cuota/FuncionesCuota.h" />
 		<Unit filename="include/cuota/MenuCuota.h" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		<Unit filename="include/fecha.h" />
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 		<Unit filename="include/libro/ArchLibro.h" />
 		<Unit filename="include/libro/FuncionesLibro.h" />
 		<Unit filename="include/libro/Libro.h" />
@@ -76,6 +67,7 @@
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/Funciones.cpp" />
 		<Unit filename="src/MenuPrincipal.cpp" />
+		<Unit filename="src/backup/Backup.cpp" />
 		<Unit filename="src/cuota/ArchCuota.cpp" />
 		<Unit filename="src/cuota/Cuota.cpp" />
 		<Unit filename="src/cuota/FuncionesCuota.cpp" />
