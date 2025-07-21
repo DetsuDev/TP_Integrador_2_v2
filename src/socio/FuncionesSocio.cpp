@@ -2,6 +2,8 @@
 #include "ArchSocio.h"
 #include "Socio.h"
 #include "Funciones.h"
+#include "Prestamo.h"
+#include "ArchPrestamo.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -132,13 +134,38 @@ void FuncionesSocio::eliminar()
         Socio obj = reg.leer( pos );
         if ( obj.get_estado() )
         {
+            Prestamo prest;
+            ArchPrestamo archPrest;
+            bool existe_registro = false;
+            int cant_reg = archPrest.contar();
+            int pos_socio;
+
+            for(int i = 0; i < cant_reg; i++){
+                    prest = archPrest.leer(i);
+                if(strcmp(dni,prest.get_dni()) == 0){
+                    pos_socio = i;
+                    existe_registro = true;
+                }
+            }
             cout << obj.get_apellido() << ", " << obj.get_nombre() << endl;
+            if(existe_registro){
+                cout << "ATENCION: hay cuotas/prestamos asociados a este socio." << endl;
+            }
             cout << "Eliminar este socio? (s/N): ";
             char opc;
             cin >> opc;
             if ( opc == 'S' || opc == 's' )
             {
                 obj.set_estado( false );
+                if(existe_registro){
+                    for(int i = 0; i < cant_reg; i++){
+                            prest = archPrest.leer(i);
+                        if(strcmp(dni,prest.get_dni()) == 0){
+                                prest.set_estado(false);
+                                archPrest.modificar(prest,i);
+                        }
+                    }
+                }
                 reg.modificar( obj, pos );
                 cout << "Socio Eliminado.\n";
             }
