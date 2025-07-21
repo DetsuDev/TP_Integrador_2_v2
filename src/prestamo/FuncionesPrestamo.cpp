@@ -68,16 +68,19 @@ void FuncionesPrestamo::registrar() {
                     prest.set_dni( dni );
                     prest.set_estado( true );
                     regPrest.grabar( prest );
-                }
+                }else{
                 cout << "Socio Inactivo\n";
                 system( "pause" );
+                }
             } else {
                 cout << "Socio Inexistente\n";
                 system( "pause" );
             }
-        }
+        }else{
         cout << "Libro Inactivo\n";
         system( "pause" );
+
+        }
     } else {
         cout << "Libro Inexistente\n";
         system( "pause" );

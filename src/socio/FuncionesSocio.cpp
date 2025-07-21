@@ -2,6 +2,8 @@
 #include "ArchSocio.h"
 #include "Socio.h"
 #include "Funciones.h"
+#include "Cuota.h"
+#include "ArchCuota.h"
 #include "Prestamo.h"
 #include "ArchPrestamo.h"
 #include <iostream>
@@ -138,17 +140,31 @@ void FuncionesSocio::eliminar()
             ArchPrestamo archPrest;
             bool existe_registro = false;
             int cant_reg = archPrest.contar();
-            int pos_socio;
 
-            for(int i = 0; i < cant_reg; i++){
-                    prest = archPrest.leer(i);
-                if(strcmp(dni,prest.get_dni()) == 0){
-                    pos_socio = i;
+            for(int i = 0; i < cant_reg; i++)
+            {
+                prest = archPrest.leer(i);
+                if(strcmp(dni,prest.get_dni()) == 0)
+                {
+                    existe_registro = true;
+                }
+            }
+
+            Cuota cuota;
+            ArchCuota archCuota;
+
+                int cant_reg_cuotas = archCuota.contar();
+                for(int i = 0; i < cant_reg_cuotas; i++)
+            {
+                cuota = archCuota.leer(i);
+                if(strcmp(dni,cuota.get_dni()) == 0)
+                {
                     existe_registro = true;
                 }
             }
             cout << obj.get_apellido() << ", " << obj.get_nombre() << endl;
-            if(existe_registro){
+            if(existe_registro)
+            {
                 cout << "ATENCION: hay cuotas/prestamos asociados a este socio." << endl;
             }
             cout << "Eliminar este socio? (s/N): ";
@@ -157,12 +173,24 @@ void FuncionesSocio::eliminar()
             if ( opc == 'S' || opc == 's' )
             {
                 obj.set_estado( false );
-                if(existe_registro){
-                    for(int i = 0; i < cant_reg; i++){
-                            prest = archPrest.leer(i);
-                        if(strcmp(dni,prest.get_dni()) == 0){
-                                prest.set_estado(false);
-                                archPrest.modificar(prest,i);
+                if(existe_registro)
+                {
+                    for(int i = 0; i < cant_reg; i++)
+                    {
+                        prest = archPrest.leer(i);
+                        if(strcmp(dni,prest.get_dni()) == 0)
+                        {
+                            prest.set_estado(false);
+                            archPrest.modificar(prest,i);
+                        }
+                    }
+                    for(int i = 0; i < cant_reg_cuotas; i++)
+                    {
+                        cuota = archCuota.leer(i);
+                        if(strcmp(dni,cuota.get_dni()) == 0)
+                        {
+                            cuota.set_estado(false);
+                            archCuota.modificar(cuota,i);
                         }
                     }
                 }
