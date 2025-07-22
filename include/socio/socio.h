@@ -15,7 +15,6 @@ private:
     Fecha fecha_nac;
     char email[40];
     Domicilio domicilio;
-    float deuda = 0;
 
 public:
     /// Setters
@@ -26,7 +25,6 @@ public:
     void set_fecha_nac( Fecha );
     void set_email( const char* );
     void set_domicilio( Domicilio );
-    //void set_deuda ( float );
 
     /// Getters
     bool get_estado();
@@ -36,7 +34,6 @@ public:
     Fecha get_fecha_nac();
     const char* get_email();
     Domicilio get_domicilio();
-    //float get_deuda();
 
     /// Funciones
     void mostrar();
