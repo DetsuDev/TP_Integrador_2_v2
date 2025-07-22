@@ -13,7 +13,7 @@ private:
     int anio;
 public:
     /// Setters
-    void set_estado( bool );
+    bool get_estado();
     const char* get_dni();
     Fecha get_fecha_pago();
     float get_importe();
@@ -21,7 +21,7 @@ public:
     int get_anio();
 
     /// Setters
-    bool get_estado();
+    void set_estado( bool );
     void set_dni( const char* );
     void set_fecha_pago( Fecha f );
     void set_importe( float imp );

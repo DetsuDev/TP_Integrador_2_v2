@@ -7,8 +7,8 @@ using namespace std;
 MenuPrestamo::MenuPrestamo() {}
 
 void MenuPrestamo::mostrar() {
-    int opc;
-    while ( true ) {
+    int opc = -1;
+    while ( opc != 0 ) {
         system( "cls" );
         cout << "SISTEMA DE GESTION DE BIBLIOTECA > GESTION PRESTAMOS \n";
         cout << "--------------------------------------------------\n";
@@ -42,7 +42,6 @@ void MenuPrestamo::mostrar() {
             system( "pause" );
             break;
         case 0:
-            return;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";

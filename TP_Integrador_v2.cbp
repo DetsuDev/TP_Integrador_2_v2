@@ -45,6 +45,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Domicilio.h" />
+		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Funciones.h" />
 		<Unit filename="include/MenuPrincipal.h" />
 		<Unit filename="include/backup/Backup.h" />

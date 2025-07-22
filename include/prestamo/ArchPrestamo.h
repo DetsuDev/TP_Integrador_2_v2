@@ -13,7 +13,10 @@ public:
     bool grabar( Prestamo obj );
     bool modificar( Prestamo obj, int pos );
     int contar();
-    int buscar( int id_prestamo );
+    int buscar_id( int id_prestamo );
+    int buscar_dni( const char* dni );
+    int buscar_isbn( const char* isbn );
+    void limpiar(const char* dni);
 };
 
 #endif // ARCHPRESTAMO_H

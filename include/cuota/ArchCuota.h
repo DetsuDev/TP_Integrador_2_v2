@@ -14,6 +14,8 @@ public:
     bool modificar( Cuota obj, int pos );
     int contar();
     int buscar( const char* dni, int mes, int anio );
+    int buscar_dni( const char* dni);
+    void limpiar(const char* dni);
 };
 
 #endif // ARCHCUOTA_H

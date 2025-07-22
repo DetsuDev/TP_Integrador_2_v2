@@ -9,12 +9,12 @@
 #include "backup/MenuBackup.h"
 using namespace std;
 
-MenuPrincipal::MenuPrincipal() {}
+MenuPrincipal::MenuPrincipal() {
+}
 
 void MenuPrincipal::mostrar() {
-    int opc;
-    bool activo = true;
-    while ( activo ) {
+    int opc = -1;
+    while ( opc != 0 ) {
         system( "cls" );
         cout << "SISTEMA DE GESTION DE BIBLIOTECA\n";
         cout << "--------------------------------\n";
@@ -59,7 +59,6 @@ void MenuPrincipal::mostrar() {
             break;
         }
         case 0:
-            activo = false;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";

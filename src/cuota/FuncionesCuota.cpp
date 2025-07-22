@@ -1,176 +1,162 @@
 #include "FuncionesCuota.h"
-#include "ArchCuota.h"
 #include "Cuota.h"
 #include "Socio.h"
-#include "ArchSocio.h"
-#include "Funciones.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
 FuncionesCuota::FuncionesCuota() {}
 
 /// Carga
-void FuncionesCuota::cargar( Cuota &obj ) {
-    Funciones f;
+void FuncionesCuota::cargar( Cuota &cuota ) {
     float importe;
     cout << "Ingrese el importe: ";
     cin >> importe;
-    obj.set_importe( importe );
+    cuota.set_importe( importe );
 
     cout << "Ingrese la fecha de pago: " << endl;
     Fecha fPago;
     fPago.cargar();
-    obj.set_fecha_pago( fPago );
+    cuota.set_fecha_pago( fPago );
 }
 
 /// Registro
 void FuncionesCuota::registrar() {
 
-    Funciones f;
-
     Cuota cuota;
-    ArchCuota regCuot;
-
-    ArchSocio regSoc;
-
     char dni[10];
     cout << "Ingrese el DNI: ";
     f.cargar_cadena( dni, 9 );
 
-    int pos_soc = regSoc.buscar( dni );
-    if ( pos_soc == -1 ) {
-        cout << "DNI NO EXISTENTE\n";
-        system( "pause" );
-        return;
-    }
+    int pos_soc = archSocio.buscar( dni );
+    if ( pos_soc > -1 ) {
+        int mes;
+        cout << "Ingrese el mes: ";
+        cin >> mes;
 
-    Socio existenteSoc = regSoc.leer( pos_soc );
-    if ( !existenteSoc.get_estado() ) {
-        cout << "Socio inactivo.\n";
-        system( "pause" );
-        return;
-    }
+        int anio;
+        cout << "Ingrese el anio: ";
+        cin >> anio;
+        int pos_cuota = archCuota.buscar( dni, mes, anio );
 
-    int mes;
-    cout << "Ingrese el mes: ";
-    cin >> mes;
-
-    int anio;
-    cout << "Ingrese el anio: ";
-    cin >> anio;
-    int pos_cuot = regCuot.buscar( dni, mes, anio );
-
-    if ( pos_cuot != -1 ) {
-        Cuota existenteCuot = regCuot.leer( pos_cuot );
-        if ( existenteCuot.get_estado() ) {
-            cout << "Cuota ya pagada.\n";
-            system( "pause" );
-            return;
+        if ( pos_cuota > -2 ) {
+            if ( pos_cuota > -1 ) {
+                cout << "Cuota ya pagada.\n";
+                system( "pause" );
+            } else {
+                cargar( cuota );
+                cuota.set_dni( dni );
+                cuota.set_mes( mes );
+                cuota.set_anio( anio );
+                cuota.set_estado( true );
+                archCuota.modificar( cuota, pos_cuota );
+            }
         }
-
         cargar( cuota );
         cuota.set_dni( dni );
         cuota.set_mes( mes );
         cuota.set_anio( anio );
         cuota.set_estado( true );
-        regCuot.modificar( cuota, pos_cuot );
-        //existenteSoc.set_deuda( existenteSoc.get_deuda() + cuota.get_importe());
-        //regSoc.modificar(existenteSoc, pos_soc);
-        return;
-    }
-    cargar( cuota );
-    cuota.set_dni( dni );
-    cuota.set_mes( mes );
-    cuota.set_anio( anio );
-    cuota.set_estado( true );
-    regCuot.grabar( cuota );
-    //existenteSoc.set_deuda( existenteSoc.get_deuda() + cuota.get_importe());
-    //regSoc.modificar(existenteSoc, pos_soc);
+        archCuota.grabar( cuota );
 
+    } else {
+        cout << "DNI NO EXISTENTE\n";
+        system( "pause" );
+    }
 }
 
 
 /// Listado
-void FuncionesCuota::listar() {
-    Cuota obj;
+void FuncionesCuota::listar( const char *dni ) {
+    Cuota cuota;
     Socio socio;
-    ArchSocio regSocio;
-    ArchCuota reg;
-    int cant_reg = reg.contar();
+    int cant_reg = archCuota.contar();
 
     if ( cant_reg < 1 ) {
         cout << "NO HAY DATOS.\n";
     } else {
         for ( int i = 0; i < cant_reg; i++ ) {
-            obj = reg.leer( i );
-            if ( obj.get_estado()) {
-                obj.mostrar();
-                //if ((strcmp(socio.get_dni(),obj.get_dni()) == 0)){
+            cuota = archCuota.leer( i );
+            if ( cuota.get_estado() ) {
+                if ( strlen( dni ) > 1 ) {
+                    if ( strcmp( cuota.get_dni(), dni ) == 0 ) {
+                        cuota.mostrar();
+                    }
+                } else {
+                    cuota.mostrar();
+                }
 
-                //cout << "Deuda: " << socio.get_deuda() << endl;
-                //}
             }
         }
-
     }
-
 }
 
 /// Buscar
 void FuncionesCuota::buscar() {
-    Funciones f;
-    ArchCuota reg;
+    Socio socio;
+    cout << "Buscar por: \n";
+    cout << "[1] Dni: \n";
+    cout << "[2] Dni y Fecha: \n";
+    cout << "Ingrese opcion: ";
+    int opc;
+    cin >> opc;
 
-    ArchSocio regSoc;
+    int pos;
+    if ( opc > 0 && opc < 3 ) {
+        char dni[10];
+        cout << "Ingrese DNI a buscar: ";
+        f.cargar_cadena( dni, 9 );
 
-    char dni[10];
-    cout << "Ingrese DNI a buscar: ";
-    f.cargar_cadena( dni, 9 );
+        int pos_socio = archSocio.buscar( dni );
+        socio = archSocio.leer( pos_socio );
+        if ( pos_socio > -1 ) {
+            if ( opc == 1 ) {
+                 pos = archCuota.buscar_dni( dni );
+                cout << "Cuotas de: ";
+                listar( dni );
+            }
+            if ( opc == 2 ) {
+                int mes;
+                cout << "Ingrese el mes: ";
+                cin >> mes;
 
-    int pos_socio = regSoc.buscar(dni);
-    Socio socio = regSoc.leer(pos_socio);
-    if (pos_socio != -1) {
-        int mes;
-    cout << "Ingrese el mes: ";
-    cin >> mes;
+                int anio;
+                cout << "Ingrese el anio: ";
+                cin >> anio;
 
-    int anio;
-    cout << "Ingrese el anio: ";
-    cin >> anio;
+                pos = archCuota.buscar( dni, mes, anio );
+                if ( pos > -1 ) {
+                    cout << "Cuota encontrada!: \n";
+                    Cuota cuota = archCuota.leer( pos );
+                    cuota.mostrar();
+                } else {
+                    cout << "Cuota sin registrar.\n";
+                }
+            }
 
+        } else {
+            cout << "DNI no encontrado.\n";
+        }
 
-    int pos = reg.buscar( dni, mes, anio );
-    if ( pos < 0 ) {
-        cout << "Cuota sin pagar.\n";
     } else {
-        cout << "Cuota pagada!: \n";
-        Cuota obj = reg.leer( pos );
-        obj.mostrar();
+
+        cout << "Operacion cancelada.\n";
+
     }
-    } else {
-    cout << "DNI no encontrado.\n";
-    }
-
-
-
 }
 
 /// Eliminar
 void FuncionesCuota::eliminar() {
-    Funciones f;
-    ArchCuota reg;
-    ArchSocio regSocio;
     char dni[10];
     cout << "Ingrese DNI de la cuota a eliminar: ";
     f.cargar_cadena( dni, 9 );
 
-    Cuota obj;
-    int cant_reg = reg.contar();
-    for(int i = 0; i < cant_reg; i++){
-        obj = reg.leer(i);
-        if((obj.get_estado() == true) && (strcmp(dni,obj.get_dni()) == 0)){
+    Cuota cuota;
+    int cant_reg = archCuota.contar();
+    for ( int i = 0; i < cant_reg; i++ ) {
+        cuota = archCuota.leer( i );
+        if ( ( cuota.get_estado() == true ) && ( strcmp( dni, cuota.get_dni() ) == 0 ) ) {
             cout << endl;
-            obj.mostrar();
+            cuota.mostrar();
         }
     }
 
@@ -182,20 +168,16 @@ void FuncionesCuota::eliminar() {
     int anio;
     cin >> anio;
 
-    int pos = reg.buscar( dni, mes, anio );
+    int pos = archCuota.buscar( dni, mes, anio );
     if ( pos != -1 ) {
-        Cuota obj = reg.leer( pos );
-        if ( obj.get_estado() ) {
+        Cuota cuota = archCuota.leer( pos );
+        if ( cuota.get_estado() ) {
             cout << "Eliminar este Cuota? (s/N): ";
             char opc;
             cin >> opc;
             if ( opc == 'S' || opc == 's' ) {
-                obj.set_estado( false );
-                /*int pos_socio = regSocio.buscar(dni);
-                Socio socio = regSocio.leer (pos_socio);
-                socio.set_deuda( socio.get_deuda() - obj.get_importe());
-                regSocio.modificar (socio, pos_socio);*/
-                reg.modificar( obj, pos );
+                cuota.set_estado( false );
+                archCuota.modificar( cuota, pos );
                 cout << "Cuota Eliminada.\n";
             } else {
                 cout << "Operacion cancelada.\n";

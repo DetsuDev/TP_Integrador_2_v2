@@ -7,8 +7,8 @@ using namespace std;
 MenuCuota::MenuCuota() {}
 
 void MenuCuota::mostrar() {
-    int opc;
-    while ( true ) {
+    int opc = -1;
+    while ( opc != 0 ) {
         system( "cls" );
         cout << "SISTEMA DE GESTION DE BIBLIOTECA > GESTION CUOTAS \n";
         cout << "--------------------------------------------------\n";
@@ -28,7 +28,7 @@ void MenuCuota::mostrar() {
             break;
         case 2:
             system( "cls" );
-            funcCuot.listar();
+            funcCuot.listar("0");
             system( "pause" );
             break;
         case 3:
@@ -42,7 +42,6 @@ void MenuCuota::mostrar() {
             system( "pause" );
             break;
         case 0:
-            return;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";

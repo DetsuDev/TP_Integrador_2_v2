@@ -1,78 +1,72 @@
 #include "FuncionesLibro.h"
-#include "ArchLibro.h"
 #include "Libro.h"
 #include "Prestamo.h"
-#include "ArchPrestamo.h"
-#include "Funciones.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
 FuncionesLibro::FuncionesLibro() {}
 
 /// Carga
-void FuncionesLibro::cargar( Libro &obj ) {
+void FuncionesLibro::cargar( Libro &libro ) {
     Funciones f;
     char buffer[50];
     cout << "Ingrese el titulo: ";
     f.cargar_cadena( buffer, 39 );
-    obj.set_titulo( buffer );
+    libro.set_titulo( buffer );
     cout << "Ingrese el autor: ";
     f.cargar_cadena( buffer, 39 );
-    obj.set_autor( buffer );
+    libro.set_autor( buffer );
     cout << "Ingrese la fecha de publicacion: ";
     int anio_publi = 0;
     cin >> anio_publi;
-    obj.set_anio_publi( anio_publi );
+    libro.set_anio_publi( anio_publi );
     cout << "Ingrese la cantidad de ejemplares: ";
     int c_ejemplares = 0;
     cin >> c_ejemplares;
-    obj.set_c_ejemplares( c_ejemplares );
+    libro.set_c_ejemplares( c_ejemplares );
 }
 
 /// Registro
 void FuncionesLibro::registrar() {
-
-    Funciones f;
-    Libro obj;
-    ArchLibro reg;
+    Libro libro;
     char isbn[20];
     cout << "Ingrese el ISBN: ";
     f.cargar_cadena( isbn, 19 );
 
-    int pos = reg.buscar( isbn );
-    if ( pos != -1 ) {
-        Libro existente = reg.leer( pos );
-        if ( existente.get_estado() ) {
+    int pos = archLibro.buscar( isbn );
+    if ( pos > -2 ) {
+        if (pos > -1)
+        {
             cout << "ISBN YA EXISTENTE\n";
             system( "pause" );
             return;
         } else {
-            obj.set_isbn( isbn );
-            cargar( obj );
-            obj.set_estado( true );
-            reg.modificar( obj, pos );
+            libro.set_isbn( isbn );
+            cargar( libro );
+            libro.set_estado( true );
+            archLibro.modificar( libro, pos );
             return;
         }
     }
-    cargar( obj );
-    obj.set_isbn( isbn );
-    obj.set_estado( true );
-    reg.grabar( obj );
+    cargar( libro );
+    libro.set_isbn( isbn );
+    libro.set_estado( true );
+
+    archLibro.grabar( libro );
 }
 
 /// Listado
 void FuncionesLibro::listar() {
-    Libro obj;
-    ArchLibro reg;
-    int cant_reg = reg.contar();
+    Libro libro;
+    int cant_reg = archLibro.contar();
 
     if ( cant_reg < 1 ) {
         cout << "NO HAY DATOS.\n";
     } else {
         for ( int i = 0; i < cant_reg; i++ ) {
-            obj = reg.leer( i );
-            if ( obj.get_estado() ) {
-                obj.mostrar();
+            libro = archLibro.leer( i );
+            if ( libro.get_estado() ) {
+                libro.mostrar();
             }
         }
 
@@ -82,59 +76,51 @@ void FuncionesLibro::listar() {
 
 /// Buscar
 void FuncionesLibro::buscar() {
-    Funciones f;
-    ArchLibro reg;
-
     char isbn[20];
     cout << "Ingrese ISBN a buscar: ";
     f.cargar_cadena( isbn, 19 );
 
-    int pos = reg.buscar( isbn );
-    if ( pos < 0 ) {
-        cout << "ISBN no encontrado.\n";
-    } else {
+    int pos = archLibro.buscar( isbn );
+    if ( pos > -1 ) {
         cout << "ISBN encontrado!: \n";
-        Libro obj = reg.leer( pos );
-        obj.mostrar();
+        Libro libro = archLibro.leer( pos );
+        libro.mostrar();
+    } else {
+        cout << "ISBN no encontrado.\n";
     }
 }
 
 /// Eliminar
 void FuncionesLibro::eliminar() {
-    Funciones f;
-    ArchLibro reg;
-    ArchPrestamo regPrest;
     char isbn[20];
     listar();
     cout << "Ingrese ISBN a eliminar: ";
     f.cargar_cadena( isbn, 19 );
 
-    int pos = reg.buscar( isbn );
-    if ( pos != -1 ) {
-        Libro obj = reg.leer( pos );
-        if ( obj.get_estado() ) {
-            int pos_prest = reg.buscar( isbn );
-            if ( pos_prest != -1 ) {
-                Prestamo prest = regPrest.leer( pos_prest );
-                if ( prest.get_estado() && (strcmp(isbn,prest.get_isbn()) == 0)) {
-                    cout << "Este libro no puede ser eliminado porque tiene un prestamo activo:\n";
-                    prest.mostrar();
-                }
-            } else {
-
-                cout << "Eliminar este Libro? (s/N): ";
-                char opc;
-                cin >> opc;
-                if ( opc == 'S' || opc == 's' ) {
-                    obj.set_estado( false );
-                    reg.modificar( obj, pos );
-                    cout << "Libro Eliminado.\n";
-                }
-            }
+    int pos_libro = archLibro.buscar( isbn );
+    if (pos_libro > -2) {
+        Libro libro = archLibro.leer(pos_libro);
+        int pos_prest = archPrest.buscar_isbn(isbn);
+        if (pos_prest > -1)
+        {
+            cout << "Este libro no puede ser eliminado porque tiene un prestamo activo: \n";
         } else {
-            cout << "ISBN inactivo!\n";
+
+        cout << "Eliminar este Libro? (s/N): ";
+        char opc;
+        cin >> opc;
+
+            if ( opc == 'S' || opc == 's' ) {
+                libro.set_estado( false );
+                archLibro.modificar( libro, pos_libro );
+                cout << "Libro Eliminado.\n";
+            } else
+            {
+                cout << "Operacion cancelada.\n";
+            }
         }
     } else {
-        cout << "ISBN no encontrado!\n";
+
+    cout << "libro no encontrado.\n";
     }
 }

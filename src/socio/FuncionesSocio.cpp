@@ -1,56 +1,47 @@
 #include "FuncionesSocio.h"
-#include "ArchSocio.h"
 #include "Socio.h"
-#include "Funciones.h"
 #include "Cuota.h"
-#include "ArchCuota.h"
 #include "Prestamo.h"
-#include "ArchPrestamo.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
 FuncionesSocio::FuncionesSocio() {}
 
 /// Carga
-void FuncionesSocio::cargar( Socio &obj )
+void FuncionesSocio::cargar( Socio &socio )
 {
-    Funciones f;
     char buffer[40];
     cout << "Ingrese el nombre: ";
     f.cargar_cadena( buffer, 29 );
-    obj.set_nombre( buffer );
+    socio.set_nombre( buffer );
     cout << "Ingrese el apellido: ";
     f.cargar_cadena( buffer, 29 );
-    obj.set_apellido( buffer );
+    socio.set_apellido( buffer );
     cout << "Ingrese la fecha de nacimiento: " << endl;
     Fecha fNac;
     fNac.cargar();
-    obj.set_fecha_nac( fNac );
+    socio.set_fecha_nac( fNac );
     cout << "Ingrese el email: ";
     f.cargar_cadena( buffer, 39 );
-    obj.set_email( buffer );
+    socio.set_email( buffer );
     cout << "Ingrese el domicilio: " << endl;
     Domicilio dom;
     dom.cargar();
-    obj.set_domicilio( dom );
+    socio.set_domicilio( dom );
 }
 
 /// Registro
 void FuncionesSocio::registrar()
 {
-
-    Funciones f;
-    Socio obj;
-    ArchSocio reg;
+    Socio socio;
     char dni[10];
     cout << "Ingrese el DNI: ";
     f.cargar_cadena( dni, 9 );
 
-    int pos = reg.buscar( dni );
-    if ( pos != -1 )
+    int pos = archSocio.buscar( dni );
+    if ( pos > -2 )
     {
-        Socio existente = reg.leer( pos );
-        if ( existente.get_estado() )
+        if (pos > -1)
         {
             cout << "DNI YA EXISTENTE\n";
             system( "pause" );
@@ -58,25 +49,24 @@ void FuncionesSocio::registrar()
         }
         else
         {
-            obj.set_dni( dni );
-            cargar( obj );
-            obj.set_estado( true );
-            reg.modificar( obj, pos );
+            socio.set_dni( dni );
+            cargar( socio );
+            socio.set_estado( true );
+            archSocio.modificar( socio, pos );
             return;
         }
     }
-    cargar( obj );
-    obj.set_dni( dni );
-    obj.set_estado( true );
-    reg.grabar( obj );
+    cargar( socio );
+    socio.set_dni( dni );
+    socio.set_estado( true );
+    archSocio.grabar( socio );
 }
 
 /// Listado
 void FuncionesSocio::listar()
 {
-    Socio obj;
-    ArchSocio reg;
-    int cant_reg = reg.contar();
+    Socio socio;
+    int cant_reg = archSocio.contar();
 
     if ( cant_reg < 1 )
     {
@@ -86,116 +76,75 @@ void FuncionesSocio::listar()
     {
         for ( int i = 0; i < cant_reg; i++ )
         {
-            obj = reg.leer( i );
-            if ( obj.get_estado() )
+            socio = archSocio.leer( i );
+            if ( socio.get_estado() )
             {
-                obj.mostrar();
+                socio.mostrar();
             }
         }
-
     }
-
 }
 
 /// Buscar
 void FuncionesSocio::buscar()
 {
-    Funciones f;
-    ArchSocio reg;
-
     char dni[10];
     cout << "Ingrese DNI a buscar: ";
     f.cargar_cadena( dni, 9 );
 
-    int pos = reg.buscar( dni );
-    if ( pos < 0 )
+    int pos = archSocio.buscar( dni );
+    if ( pos > -1 )
     {
-        cout << "DNI no encontrado.\n";
+        Socio socio = archSocio.leer( pos );
+        socio.mostrar();
+        cout << "DNI encontrado!: \n";
     }
     else
     {
-        cout << "DNI encontrado!: \n";
-        Socio obj = reg.leer( pos );
-        obj.mostrar();
+        cout << "DNI no encontrado.\n";
     }
 }
 
 /// Eliminar
 void FuncionesSocio::eliminar()
 {
-    Funciones f;
-    ArchSocio reg;
+    Socio socio;
     listar();
     char dni[10];
     cout << "Ingrese DNI a eliminar: ";
     f.cargar_cadena( dni, 9 );
 
-    int pos = reg.buscar( dni );
-    if ( pos != -1 )
+    int pos_socio = archSocio.buscar( dni );
+    if ( pos_socio > -2 )
     {
-        Socio obj = reg.leer( pos );
-        if ( obj.get_estado() )
+        if (pos_socio > -1)
         {
             Prestamo prest;
-            ArchPrestamo archPrest;
-            bool existe_registro = false;
-            int cant_reg = archPrest.contar();
-
-            for(int i = 0; i < cant_reg; i++)
-            {
-                prest = archPrest.leer(i);
-                if(strcmp(dni,prest.get_dni()) == 0)
-                {
-                    existe_registro = true;
-                }
-            }
-
             Cuota cuota;
-            ArchCuota archCuota;
+            Socio socio = archSocio.leer(pos_socio);
+            int pos_prest =  archPrest.buscar_dni(dni);
+            int pos_cuota =  archCuota.buscar_dni(dni);
+            cout << pos_prest << endl;
+            cout << pos_cuota << endl;
+            if (pos_prest > -1 && pos_cuota > -1) {
 
-                int cant_reg_cuotas = archCuota.contar();
-                for(int i = 0; i < cant_reg_cuotas; i++)
-            {
-                cuota = archCuota.leer(i);
-                if(strcmp(dni,cuota.get_dni()) == 0)
-                {
-                    existe_registro = true;
-                }
-            }
-            cout << obj.get_apellido() << ", " << obj.get_nombre() << endl;
-            if(existe_registro)
-            {
-                cout << "ATENCION: hay cuotas/prestamos asociados a este socio." << endl;
+            cout << socio.get_apellido() << ", " << socio.get_nombre() << endl;
+            cout << "ATENCION: hay cuotas/prestamos asociados a este socio, si lo elimina, sus prestamos y cuotas se eliminaran." << endl;
             }
             cout << "Eliminar este socio? (s/N): ";
             char opc;
             cin >> opc;
             if ( opc == 'S' || opc == 's' )
             {
-                obj.set_estado( false );
-                if(existe_registro)
-                {
-                    for(int i = 0; i < cant_reg; i++)
-                    {
-                        prest = archPrest.leer(i);
-                        if(strcmp(dni,prest.get_dni()) == 0)
-                        {
-                            prest.set_estado(false);
-                            archPrest.modificar(prest,i);
-                        }
-                    }
-                    for(int i = 0; i < cant_reg_cuotas; i++)
-                    {
-                        cuota = archCuota.leer(i);
-                        if(strcmp(dni,cuota.get_dni()) == 0)
-                        {
-                            cuota.set_estado(false);
-                            archCuota.modificar(cuota,i);
-                        }
-                    }
-                }
-                reg.modificar( obj, pos );
-                cout << "Socio Eliminado.\n";
+                socio.set_estado( false );
+                archSocio.modificar( socio, pos_socio );
+
+                archPrest.limpiar(dni);
+                archCuota.limpiar(dni);
+
+                cout << "El Socio fue eliminado.\n";
+            } else {
+            cout << "Operacion cancelada.\n";
             }
         }
     }

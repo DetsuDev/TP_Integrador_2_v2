@@ -2,8 +2,15 @@
 #define FUNCIONESLIBRO_H
 
 #include "Libro.h"
+#include "ArchLibro.h"
+#include "ArchPrestamo.h"
+#include "Funciones.h"
 
 class FuncionesLibro {
+private:
+    ArchLibro archLibro;
+    ArchPrestamo archPrest;
+    Funciones f;
 public:
     FuncionesLibro();
     void cargar( Libro &obj );

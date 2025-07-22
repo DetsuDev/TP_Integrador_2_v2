@@ -30,17 +30,65 @@ Prestamo ArchPrestamo::leer( int pos ) {
     return obj;
 }
 
-
-int ArchPrestamo::buscar( int id_prestamo ) {
+void ArchPrestamo::limpiar( const char* dni ) {
     Prestamo obj;
-        int cantReg = contar();
-        for ( int i = 0; i < cantReg; i++ ) {
-            obj = leer( i );
-            if ( obj.get_estado() && obj.get_id_prestamo() == id_prestamo ) {
-                return i;
+    int cantReg = contar();
+    for ( int i = 0; i < cantReg; i++ ) {
+        obj = leer ( i );
+        if ( strcmp( obj.get_dni(), dni ) == 0 ) {
+            if ( obj.get_estado() ) {
+                obj.set_estado(false);
             }
         }
-    return -1;
+    }
+}
+
+int ArchPrestamo::buscar_id( int id_prestamo ) {
+    Prestamo obj;
+    int cantReg = contar();
+    for ( int i = 0; i < cantReg; i++ ) {
+        obj = leer( i );
+        if ( obj.get_id_prestamo() == id_prestamo ) {
+            if ( obj.get_estado() ) {
+                return i;
+            } else {
+                return -1;
+            }
+        }
+    }
+    return -2;
+}
+
+int ArchPrestamo::buscar_isbn( const char *isbn ) {
+    Prestamo obj;
+    int cantReg = contar();
+    for ( int i = 0; i < cantReg; i++ ) {
+        obj = leer( i );
+        if ( strcmp( obj.get_isbn(), isbn ) == 0 ) {
+            if ( obj.get_estado() ) {
+                return i;
+            } else {
+                return -1;
+            }
+        }
+    }
+    return -2;
+}
+
+int ArchPrestamo::buscar_dni( const char *dni ) {
+    Prestamo obj;
+    int cantReg = contar();
+    for ( int i = 0; i < cantReg; i++ ) {
+        obj = leer( i );
+        if ( strcmp( obj.get_dni(), dni ) == 0 ) {
+            if ( obj.get_estado() ) {
+                return i;
+            } else {
+                return -1;
+            }
+        }
+    }
+    return -2;
 }
 
 bool ArchPrestamo::modificar( Prestamo obj, int pos ) {

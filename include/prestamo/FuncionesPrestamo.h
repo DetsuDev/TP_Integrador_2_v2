@@ -2,8 +2,17 @@
 #define FUNCIONESPRESTAMO_H
 
 #include "Prestamo.h"
+#include "ArchSocio.h"
+#include "ArchLibro.h"
+#include "ArchPrestamo.h"
+#include "Funciones.h"
 
 class FuncionesPrestamo {
+private:
+    ArchLibro archLibro;
+    ArchSocio archSocio;
+    ArchPrestamo archPrest;
+    Funciones f;
 public:
     FuncionesPrestamo();
     void cargar( Prestamo &obj );
@@ -11,9 +20,6 @@ public:
     void listar();
     void buscar();
     void eliminar();
-protected:
-
-private:
 };
 
 

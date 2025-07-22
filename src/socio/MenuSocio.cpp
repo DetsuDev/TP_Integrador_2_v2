@@ -7,8 +7,8 @@ using namespace std;
 MenuSocio::MenuSocio() {}
 
 void MenuSocio::mostrar() {
-    int opc;
-    while ( true ) {
+    int opc = -1;
+    while ( opc != 0 ) {
         system( "cls" );
         cout << "SISTEMA DE GESTION DE BIBLIOTECA > GESTION SOCIOS \n";
         cout << "--------------------------------------------------\n";
@@ -42,7 +42,6 @@ void MenuSocio::mostrar() {
             system( "pause" );
             break;
         case 0:
-            return;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
