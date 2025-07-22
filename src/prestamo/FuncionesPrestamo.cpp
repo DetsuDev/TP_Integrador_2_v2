@@ -181,26 +181,3 @@ void FuncionesPrestamo::eliminar()
         cout << "Prestamo no encontrado!\n";
     }
 }
-
-void FuncionesPrestamo::exportarCSV() {
-    ofstream archivo("prestamos.csv");
-    archivo << "ID,ISBN,Titulo,DNI,FechaPrestamo,FechaDevolucion,Estado\n";
-
-    ArchPrestamo reg;
-    int cant_reg = reg.contar();
-    Prestamo obj;
-
-    for (int i = 0; i < cant_reg; i++) {
-        obj = reg.leer(i);
-        archivo << obj.get_id_prestamo() << ","
-                << obj.get_isbn() << ","
-                << obj.get_titulo() << ","
-                << obj.get_dni() << ","
-                << obj.get_fecha_prest().toString() << ","
-                << obj.get_fecha_dev().toString() << ","
-                << (obj.get_estado() ? "Activo" : "Inactivo") << "\n";
-    }
-    archivo.close();
-    cout << "Exportación a CSV completa.\n";
-}
-
