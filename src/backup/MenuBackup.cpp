@@ -1,20 +1,17 @@
 #include <iostream>
 using namespace std;
 
-#include "Backup.h"
-#include "MenuBackup.h"
+#include "backup/Backup.h"
+#include "backup/MenuBackup.h"
 
-MenuBackup::MenuBackup()
-{
+MenuBackup::MenuBackup() {
     //ctor
 }
 
-void MenuBackup::mostrar()
-{
+void MenuBackup::mostrar() {
     Backup backup;
     int opc;
-    while ( true )
-    {
+    while ( true ) {
         system( "cls" );
         cout << "SISTEMA DE GESTION DE BIBLIOTECA > GESTION BACKUP \n";
         cout << "--------------------------------------------------\n";
@@ -24,26 +21,23 @@ void MenuBackup::mostrar()
         cout << "Ingrese opcion: ";
         cin >> opc;
 
-        switch(opc)
-        {
+        switch ( opc ) {
         case 1:
-                if(backup.backup_general()){
-                    cout << "Hecho." << endl;
-                }
-                else{
-                    cout << "Hubo errores en el backup." << endl;
-                }
-                    system("pause");
+            if ( backup.backup_general() ) {
+                cout << "Hecho." << endl;
+            } else {
+                cout << "Hubo errores en el backup." << endl;
+            }
+            system( "pause" );
             break;
 
         case 2:
-                if(backup.restaurar_general()){
-                    cout << "Hecho." << endl;
-                }
-                else{
-                    cout << "Hubo errores en el restaurado." << endl;
-                }
-                    system("pause");
+            if ( backup.restaurar_general() ) {
+                cout << "Hecho." << endl;
+            } else {
+                cout << "Hubo errores en el restaurado." << endl;
+            }
+            system( "pause" );
             break;
 
         case 0:

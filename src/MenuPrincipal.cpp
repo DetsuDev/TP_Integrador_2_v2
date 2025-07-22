@@ -5,7 +5,8 @@
 #include "MenuLibro.h"
 #include "MenuPrestamo.h"
 #include "MenuCuota.h"
-#include "MenuBackup.h"
+#include "MenuCSV.h"
+#include "backup/MenuBackup.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {}
@@ -22,6 +23,7 @@ void MenuPrincipal::mostrar() {
         cout << "[3] Gestionar Prestamos\n";
         cout << "[4] Gestionar Cuotas\n";
         cout << "[5] Gestionar Backup\n";
+        cout << "[6] Gestionar CSV\n";
         cout << "[0] Salir\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
@@ -49,14 +51,19 @@ void MenuPrincipal::mostrar() {
         case 5: {
             MenuBackup menuBackup;
             menuBackup.mostrar();
+            break;
         }
-        break;
+        case 6: {
+            MenuCSV menuCSV;
+            menuCSV.mostrar();
+            break;
+        }
         case 0:
             activo = false;
             break;
         default:
             cout << "SELECCION INCORRECTA\n";
-            system("pause");
+            system( "pause" );
         }
     }
 }

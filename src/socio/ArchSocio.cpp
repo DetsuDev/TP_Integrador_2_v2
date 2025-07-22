@@ -22,7 +22,6 @@ bool ArchSocio::grabar( Socio obj ) {
 
 Socio ArchSocio::leer( int pos ) {
     Socio obj;
-
     FILE *p = fopen( nombre, "rb" );
     fseek( p, pos * sizeof obj, 0 );
     fread( &obj, sizeof obj, 1, p );
@@ -30,15 +29,15 @@ Socio ArchSocio::leer( int pos ) {
     return obj;
 }
 
-int ArchSocio::buscar( const char *dni ) {
+int ArchSocio::buscar( const char *dni) {
     Socio obj;
-    int cantReg = contar();
-    for ( int i = 0; i < cantReg; i++ ) {
-        obj = leer( i );
-        if ( strcmp( obj.get_dni(), dni ) == 0 ) {
-            return i;
+        int cantReg = contar();
+        for ( int i = 0; i < cantReg; i++ ) {
+            obj = leer( i );
+            if ( obj.get_estado() && strcmp( obj.get_dni(), dni ) == 0 ) {
+                return i;
+            }
         }
-    }
     return -1;
 }
 

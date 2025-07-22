@@ -18,6 +18,7 @@
 					<Add directory="include/libro" />
 					<Add directory="include/prestamo" />
 					<Add directory="include/cuota" />
+					<Add directory="include/csv" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,6 +33,7 @@
 					<Add directory="include/libro" />
 					<Add directory="include/prestamo" />
 					<Add directory="include/cuota" />
+					<Add directory="include/csv" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -47,6 +49,8 @@
 		<Unit filename="include/MenuPrincipal.h" />
 		<Unit filename="include/backup/Backup.h" />
 		<Unit filename="include/backup/MenuBackup.h" />
+		<Unit filename="include/csv/CSV.h" />
+		<Unit filename="include/csv/MenuCSV.h" />
 		<Unit filename="include/cuota/ArchCuota.h" />
 		<Unit filename="include/cuota/Cuota.h" />
 		<Unit filename="include/cuota/FuncionesCuota.h" />
@@ -70,14 +74,16 @@
 		<Unit filename="src/MenuPrincipal.cpp" />
 		<Unit filename="src/backup/Backup.cpp" />
 		<Unit filename="src/backup/MenuBackup.cpp" />
+		<Unit filename="src/csv/CSV.cpp" />
+		<Unit filename="src/csv/MenuCSV.cpp" />
 		<Unit filename="src/cuota/ArchCuota.cpp" />
 		<Unit filename="src/cuota/Cuota.cpp" />
 		<Unit filename="src/cuota/FuncionesCuota.cpp" />
 		<Unit filename="src/cuota/MenuCuota.cpp" />
 		<Unit filename="src/libro/ArchLibro.cpp" />
 		<Unit filename="src/libro/FuncionesLibro.cpp" />
+		<Unit filename="src/libro/Libro.cpp" />
 		<Unit filename="src/libro/MenuLibro.cpp" />
-		<Unit filename="src/libro/libro.cpp" />
 		<Unit filename="src/prestamo/ArchPrestamo.cpp" />
 		<Unit filename="src/prestamo/FuncionesPrestamo.cpp" />
 		<Unit filename="src/prestamo/MenuPrestamo.cpp" />

@@ -30,15 +30,16 @@ Libro ArchLibro::leer( int pos ) {
     return obj;
 }
 
+
 int ArchLibro::buscar( const char *isbn ) {
     Libro obj;
-    int cantReg = contar();
-    for ( int i = 0; i < cantReg; i++ ) {
-        obj = leer( i );
-        if ( strcmp( obj.get_isbn(), isbn ) == 0 ) {
-            return i;
+        int cantReg = contar();
+        for ( int i = 0; i < cantReg; i++ ) {
+            obj = leer( i );
+            if ( obj.get_estado() && strcmp( obj.get_isbn(), isbn ) == 0 ) {
+                return i;
+            }
         }
-    }
     return -1;
 }
 

@@ -33,13 +33,13 @@ Prestamo ArchPrestamo::leer( int pos ) {
 
 int ArchPrestamo::buscar( int id_prestamo ) {
     Prestamo obj;
-    int cantReg = contar();
-    for ( int i = 0; i < cantReg; i++ ) {
-        obj = leer( i );
-        if ( obj.get_id_prestamo() == id_prestamo ) {
-            return i;
+        int cantReg = contar();
+        for ( int i = 0; i < cantReg; i++ ) {
+            obj = leer( i );
+            if ( obj.get_estado() && obj.get_id_prestamo() == id_prestamo ) {
+                return i;
+            }
         }
-    }
     return -1;
 }
 

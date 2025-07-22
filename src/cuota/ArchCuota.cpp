@@ -23,19 +23,22 @@ bool ArchCuota::grabar( Cuota obj ) {
 Cuota ArchCuota::leer( int pos ) {
     Cuota obj;
 
+
     FILE *p = fopen( nombre, "rb" );
     fseek( p, pos * sizeof obj, 0 );
     fread( &obj, sizeof obj, 1, p );
     fclose( p );
-    return obj;
+    if ( obj.get_estado() ) {
+        return obj;
+    }
 }
-
 int ArchCuota::buscar( const char *dni, int mes, int anio ) {
     Cuota obj;
     int cantReg = contar();
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
-        if ( strcmp( obj.get_dni(), dni ) == 0 && obj.get_mes() == mes && obj.get_anio() == anio) {
+
+        if ( obj.get_estado() && strcmp( obj.get_dni(), dni ) == 0 && obj.get_mes() == mes && obj.get_anio() == anio ) {
             return i;
         }
     }
