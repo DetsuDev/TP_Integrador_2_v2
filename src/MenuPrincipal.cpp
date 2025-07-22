@@ -5,6 +5,7 @@
 #include "MenuLibro.h"
 #include "MenuPrestamo.h"
 #include "MenuCuota.h"
+#include "MenuBackup.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {}
@@ -20,7 +21,7 @@ void MenuPrincipal::mostrar() {
         cout << "[2] Gestionar Libros\n";
         cout << "[3] Gestionar Prestamos\n";
         cout << "[4] Gestionar Cuotas\n";
-        cout << "[5] Generar Backup\n";
+        cout << "[5] Gestionar Backup\n";
         cout << "[0] Salir\n";
         cout << "Ingrese opcion: ";
         cin >> opc;
@@ -46,7 +47,8 @@ void MenuPrincipal::mostrar() {
             break;
         }
         case 5: {
-
+            MenuBackup menuBackup;
+            menuBackup.mostrar();
         }
         break;
         case 0:

@@ -5,8 +5,9 @@
 class Backup
 {
     public:
-        Backup();
-        bool generar_backup(const char* archivoOriginal, const char* archivoBackup);
+        bool backup(const char* archivoOriginal, const char* archivoBackup);
+        bool backup_general();
+        bool restaurar_general();
     private:
 };
 
