@@ -65,18 +65,15 @@ int ArchPrestamo::buscar( const char *dato, const char *tipo ) {
     int cantReg = contar();
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
-        if ( obj.get_estado() ) {
             if (strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 ) {
                 return i;
             }
             if ( strcmp( "d", tipo ) == 0 && strcmp( obj.get_dni(), dato ) == 0 ) {
                 return i;
             }
-        } else {
-            return -1;
-        }
+
     }
-    return -2;
+    return -1;
 }
 
 bool ArchPrestamo::modificar( Prestamo obj, int pos ) {

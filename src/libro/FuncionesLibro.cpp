@@ -7,7 +7,8 @@ using namespace std;
 FuncionesLibro::FuncionesLibro() {}
 
 /// Carga
-void FuncionesLibro::cargar( Libro &libro ) {
+void FuncionesLibro::cargar( Libro &libro )
+{
     Funciones f;
     char buffer[50];
     cout << "Ingrese el titulo: ";
@@ -27,19 +28,26 @@ void FuncionesLibro::cargar( Libro &libro ) {
 }
 
 /// Registro
-void FuncionesLibro::registrar() {
+void FuncionesLibro::registrar()
+{
     Libro libro;
     char isbn[20];
     cout << "Ingrese el ISBN: ";
     f.cargar_cadena( isbn, 19 );
 
-    int pos = archLibro.buscar( isbn , "i");
-    if ( pos > -2 ) {
-        if ( pos > -1 ) {
+    int pos = archLibro.buscar( isbn, "i");
+    if ( pos > -1 )
+    {
+
+        libro = archLibro.leer(pos);
+        if (libro.get_estado())
+        {
             cout << "ISBN YA EXISTENTE\n";
             system( "pause" );
             return;
-        } else {
+        }
+        else
+        {
             libro.set_isbn( isbn );
             cargar( libro );
             libro.set_estado( true );
@@ -55,16 +63,22 @@ void FuncionesLibro::registrar() {
 }
 
 /// Listado
-void FuncionesLibro::listar() {
+void FuncionesLibro::listar()
+{
     Libro libro;
     int cant_reg = archLibro.contar();
 
-    if ( cant_reg < 1 ) {
+    if ( cant_reg < 1 )
+    {
         cout << "NO HAY DATOS.\n";
-    } else {
-        for ( int i = 0; i < cant_reg; i++ ) {
+    }
+    else
+    {
+        for ( int i = 0; i < cant_reg; i++ )
+        {
             libro = archLibro.leer( i );
-            if ( libro.get_estado() ) {
+            if ( libro.get_estado() )
+            {
                 libro.mostrar();
             }
         }
@@ -74,7 +88,8 @@ void FuncionesLibro::listar() {
 }
 
 /// Buscar
-void FuncionesLibro::buscar() {
+void FuncionesLibro::buscar()
+{
     int opc = -1;
     int pos = -1;
     char isbn[20];
@@ -85,60 +100,98 @@ void FuncionesLibro::buscar() {
     cout << "[0] Volver. \n";
     cout << "Ingrese opcion: ";
     cin >> opc;
-    if ( opc == 1 ) {
+    if ( opc == 1 )
+    {
 
         cout << "Ingrese ISBN a buscar: ";
         f.cargar_cadena( isbn, 19 );
 
-        pos = archLibro.buscar( isbn , "i");
-    } else if ( opc == 2 ) {
+        pos = archLibro.buscar( isbn, "i");
+    }
+    else if ( opc == 2 )
+    {
 
         cout << "Ingrese el Titulo a buscar: ";
         f.cargar_cadena( titulo, 49 );
-        pos = archLibro.buscar( titulo , "t");
-    } else {
+        pos = archLibro.buscar( titulo, "t");
+    }
+    else
+    {
 
         cout << "Opcion invalida.\n";
     }
 
-    if ( pos > -1 ) {
-        cout << "Libro encontrado!: \n";
+    if ( pos > -1 )
+    {
         Libro libro = archLibro.leer( pos );
-        libro.mostrar();
-    } else {
+        if (libro.get_estado())
+        {
+            cout << "Libro encontrado!: \n";
+            libro.mostrar();
+
+        }
+        else
+        {
+
+            cout << "Libro no encontrado.\n";
+        }
+    }
+    else
+    {
         cout << "Libro no encontrado.\n";
     }
 }
 
 /// Eliminar
-void FuncionesLibro::eliminar() {
+void FuncionesLibro::eliminar()
+{
+    Prestamo prest;
     char isbn[20];
     listar();
     cout << "Ingrese ISBN a eliminar: ";
     f.cargar_cadena( isbn, 19 );
 
-    int pos_libro = archLibro.buscar( isbn , "i");
-    if ( pos_libro > -2 ) {
+    int pos_libro = archLibro.buscar( isbn, "i");
+    if ( pos_libro > -1 )
+    {
         Libro libro = archLibro.leer( pos_libro );
-        int pos_prest = archPrest.buscar( isbn , "i");
-        if ( pos_prest > -1 ) {
-            cout << "Este libro no puede ser eliminado porque tiene un prestamo activo.\n";
-        } else {
 
-            cout << "Eliminar este Libro? (s/N): ";
-            char opc;
-            cin >> opc;
+        if (libro.get_estado())
+        {
+            int pos_prest = archPrest.buscar( isbn, "i");
+            prest = archPrest.leer(pos_prest);
+            if (prest.get_estado())
+            {
 
-            if ( opc == 'S' || opc == 's' ) {
-                libro.set_estado( false );
-                archLibro.modificar( libro, pos_libro );
-                cout << "Libro Eliminado.\n";
-            } else {
-                cout << "Operacion cancelada.\n";
+                cout << "Este libro no puede ser eliminado porque tiene un prestamo activo.\n";
+            }
+            else
+            {
+                cout << "Eliminar este Libro? (s/N): ";
+                char opc;
+                cin >> opc;
+
+                if ( opc == 'S' || opc == 's' )
+                {
+                    libro.set_estado( false );
+                    archLibro.modificar( libro, pos_libro );
+                    cout << "Libro Eliminado.\n";
+                }
+                else
+                {
+                    cout << "Operacion cancelada.\n";
+                }
             }
         }
-    } else {
+        else
+        {
+            cout << "libro no encontrado.\n";
+        }
 
+    }
+    else
+    {
         cout << "libro no encontrado.\n";
     }
+
 }

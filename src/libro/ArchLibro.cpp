@@ -6,13 +6,16 @@
 
 using namespace std;
 
-ArchLibro::ArchLibro( const char *n ) {
+ArchLibro::ArchLibro( const char *n )
+{
     strcpy( nombre, n );
 }
 
-bool ArchLibro::grabar( Libro obj ) {
+bool ArchLibro::grabar( Libro obj )
+{
     FILE *p = fopen( nombre, "ab" );
-    if ( p == nullptr ) {
+    if ( p == nullptr )
+    {
         return false;
     }
     bool escribio = fwrite( &obj, sizeof obj, 1, p );
@@ -20,7 +23,8 @@ bool ArchLibro::grabar( Libro obj ) {
     return escribio;
 }
 
-Libro ArchLibro::leer( int pos ) {
+Libro ArchLibro::leer( int pos )
+{
     Libro obj;
 
     FILE *p = fopen( nombre, "rb" );
@@ -29,30 +33,32 @@ Libro ArchLibro::leer( int pos ) {
     fclose( p );
     return obj;
 }
-int ArchLibro::buscar( const char *dato, const char *tipo ) {
+int ArchLibro::buscar( const char *dato, const char *tipo )
+{
     /// Tipos de datos: i para isbn, t para titulo,
     Libro obj;
     int cantReg = contar();
-    for ( int i = 0; i < cantReg; i++ ) {
+    for ( int i = 0; i < cantReg; i++ )
+    {
         obj = leer( i );
-        if ( obj.get_estado() ) {
-            if (strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 ) {
-                return i;
-            }
-            if ( strcmp( "t", tipo ) == 0 && strcmp( obj.get_titulo(), dato ) == 0 ) {
-                return i;
-            }
-        } else {
-            return -1;
+        if (strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 )
+        {
+            return i;
+        }
+        if ( strcmp( "t", tipo ) == 0 && strcmp( obj.get_titulo(), dato ) == 0 )
+        {
+            return i;
         }
     }
-    return -2;
+    return -1;
 }
 
-bool ArchLibro::modificar( Libro obj, int pos ) {
+bool ArchLibro::modificar( Libro obj, int pos )
+{
     FILE *p;
     p = fopen( nombre, "rb+" );
-    if ( p == nullptr ) {
+    if ( p == nullptr )
+    {
         return false;
     }
     fseek( p, pos * sizeof obj, 0 );
@@ -61,9 +67,11 @@ bool ArchLibro::modificar( Libro obj, int pos ) {
     return escribio;
 }
 
-int ArchLibro::contar() {
+int ArchLibro::contar()
+{
     FILE *p = fopen( nombre, "rb" );
-    if ( p == nullptr ) {
+    if ( p == nullptr )
+    {
         return -1;
     }
     fseek( p, 0, 2 );

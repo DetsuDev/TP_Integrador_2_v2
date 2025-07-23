@@ -37,12 +37,10 @@ int ArchSocio::buscar( const char *dni ) {
         if ( strcmp( obj.get_dni(), dni ) == 0 ) {
             if ( obj.get_estado() ) {
                 return i;
-            } else {
-                return -1;
             }
         }
     }
-    return -2;
+    return -1;
 }
 
 bool ArchSocio::modificar( Socio obj, int pos ) {

@@ -39,9 +39,10 @@ void FuncionesSocio::registrar()
     f.cargar_cadena( dni, 9 );
 
     int pos = archSocio.buscar( dni );
-    if ( pos > -2 )
+    if ( pos > -1 )
     {
-        if (pos > -1)
+        socio = archSocio.leer(pos);
+        if (socio.get_estado())
         {
             cout << "DNI YA EXISTENTE\n";
             system( "pause" );
@@ -96,8 +97,15 @@ void FuncionesSocio::buscar()
     if ( pos > -1 )
     {
         Socio socio = archSocio.leer( pos );
-        socio.mostrar();
-        cout << "DNI encontrado!: \n";
+        if (socio.get_estado())
+        {
+            socio.mostrar();
+            cout << "DNI encontrado!: \n";
+        }
+        else
+        {
+            cout << "DNI no encontrado.\n";
+        }
     }
     else
     {
@@ -124,12 +132,11 @@ void FuncionesSocio::eliminar()
             Socio socio = archSocio.leer(pos_socio);
             int pos_prest =  archPrest.buscar(dni, "d");
             int pos_cuota =  archCuota.buscar(dni,0,0, "d");
-            cout << pos_prest << endl;
-            cout << pos_cuota << endl;
-            if (pos_prest > -1 && pos_cuota > -1) {
+            if (pos_prest > -1 && pos_cuota > -1)
+            {
 
-            cout << socio.get_apellido() << ", " << socio.get_nombre() << endl;
-            cout << "ATENCION: hay cuotas/prestamos asociados a este socio, si lo elimina, sus prestamos y cuotas se eliminaran." << endl;
+                cout << socio.get_apellido() << ", " << socio.get_nombre() << endl;
+                cout << "ATENCION: hay cuotas/prestamos asociados a este socio, si lo elimina, sus prestamos y cuotas se eliminaran." << endl;
             }
             cout << "Eliminar este socio? (s/N): ";
             char opc;
@@ -143,8 +150,10 @@ void FuncionesSocio::eliminar()
                 archCuota.limpiar(dni);
 
                 cout << "El Socio fue eliminado.\n";
-            } else {
-            cout << "Operacion cancelada.\n";
+            }
+            else
+            {
+                cout << "Operacion cancelada.\n";
             }
         }
     }
