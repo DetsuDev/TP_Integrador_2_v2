@@ -81,7 +81,7 @@ void FuncionesPrestamo::listar( const char* dato, const char* tipo ) {
                     if ( strcmp( "d", tipo ) == 0 && strcmp( prestamo.get_dni(), dato ) == 0 ) {
                         prestamo.mostrar();
                     }
-                    if ( strcmp( "l", tipo ) == 0 && strcmp( prestamo.get_isbn(), dato ) == 0 ) {
+                    if ( strcmp( "i", tipo ) == 0 && strcmp( prestamo.get_isbn(), dato ) == 0 ) {
                         prestamo.mostrar();
                     }
                 } else {
@@ -104,7 +104,8 @@ void FuncionesPrestamo::buscar() {
     cout << "Buscar por: \n";
     cout << "[1] ID \n";
     cout << "[2] DNI \n";
-    cout << "[3] Titulo \n";
+    cout << "[3] ISBN \n";
+    cout << "[0] Volver. \n";
     cout << "Ingrese opcion: ";
     cin >> opc;
     if ( opc == 1 ) {
@@ -123,11 +124,11 @@ void FuncionesPrestamo::buscar() {
     if ( opc == 2 ) {
 
         cout << "Ingrese DNI a buscar: ";
-        f.cargar_cadena( isbn, 19 );
+        f.cargar_cadena( dni, 9 );
         listar( dni, "d" );
     }
     if ( opc == 3 ) {
-        cout << "Ingrese el Titulo a buscar: ";
+        cout << "Ingrese el ISBN a buscar: ";
         f.cargar_cadena( isbn, 19 );
         listar( isbn, "i" );
     }

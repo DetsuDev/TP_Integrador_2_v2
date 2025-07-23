@@ -82,6 +82,7 @@ void FuncionesLibro::buscar() {
     cout << "Buscar por: \n";
     cout << "[1] ISBN \n";
     cout << "[2] Titulo \n";
+    cout << "[0] Volver. \n";
     cout << "Ingrese opcion: ";
     cin >> opc;
     if ( opc == 1 ) {

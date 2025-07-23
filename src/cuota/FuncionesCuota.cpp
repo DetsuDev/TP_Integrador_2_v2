@@ -96,6 +96,7 @@ void FuncionesCuota::buscar() {
     cout << "Buscar por: \n";
     cout << "[1] Dni: \n";
     cout << "[2] Dni y Fecha: \n";
+    cout << "[0] Volver. \n";
     cout << "Ingrese opcion: ";
     int opc = -1;
     cin >> opc;
