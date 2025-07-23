@@ -162,7 +162,6 @@ void FuncionesLibro::eliminar()
             prest = archPrest.leer(pos_prest);
             if (prest.get_estado())
             {
-
                 cout << "Este libro no puede ser eliminado porque tiene un prestamo activo.\n";
             }
             else

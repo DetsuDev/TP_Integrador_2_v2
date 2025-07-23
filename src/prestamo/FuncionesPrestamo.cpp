@@ -93,7 +93,11 @@ void FuncionesPrestamo::listar( const char* dato, const char* tipo )
             prestamo = archPrest.leer( i );
             if ( prestamo.get_estado() )
             {
-                if ( strlen( dato ) > 1 )
+                if ( strcmp( dato, "0" ) == 0 )
+                {
+                    prestamo.mostrar();
+                }
+                else
                 {
                     if ( strcmp( "d", tipo ) == 0 && strcmp( prestamo.get_dni(), dato ) == 0 )
                     {
@@ -103,10 +107,6 @@ void FuncionesPrestamo::listar( const char* dato, const char* tipo )
                     {
                         prestamo.mostrar();
                     }
-                }
-                else
-                {
-                    prestamo.mostrar();
                 }
             }
         }
