@@ -28,7 +28,7 @@ void MenuPrestamo::mostrar() {
             break;
         case 2:
             system( "cls" );
-            funcPrest.listar();
+            funcPrest.listar("0", "0");
             system( "pause" );
             break;
         case 3:

@@ -36,7 +36,7 @@ void FuncionesCuota::registrar() {
         int anio;
         cout << "Ingrese el anio: ";
         cin >> anio;
-        int pos_cuota = archCuota.buscar( dni, mes, anio );
+        int pos_cuota = archCuota.buscar( dni, mes, anio , "c");
 
         if ( pos_cuota > -2 ) {
             if ( pos_cuota > -1 ) {
@@ -97,10 +97,11 @@ void FuncionesCuota::buscar() {
     cout << "[1] Dni: \n";
     cout << "[2] Dni y Fecha: \n";
     cout << "Ingrese opcion: ";
-    int opc;
+    int opc = -1;
     cin >> opc;
 
-    int pos;
+
+    int pos = -2;
     if ( opc > 0 && opc < 3 ) {
         char dni[10];
         cout << "Ingrese DNI a buscar: ";
@@ -110,7 +111,7 @@ void FuncionesCuota::buscar() {
         socio = archSocio.leer( pos_socio );
         if ( pos_socio > -1 ) {
             if ( opc == 1 ) {
-                 pos = archCuota.buscar_dni( dni );
+                 pos = archCuota.buscar( dni ,0,0, "d");
                 cout << "Cuotas de: ";
                 listar( dni );
             }
@@ -123,8 +124,9 @@ void FuncionesCuota::buscar() {
                 cout << "Ingrese el anio: ";
                 cin >> anio;
 
-                pos = archCuota.buscar( dni, mes, anio );
+                pos = archCuota.buscar( dni, mes, anio , "c");
                 if ( pos > -1 ) {
+                    cout << "--------------------------------------------------\n";
                     cout << "Cuota encontrada!: \n";
                     Cuota cuota = archCuota.leer( pos );
                     cuota.mostrar();
@@ -152,13 +154,7 @@ void FuncionesCuota::eliminar() {
 
     Cuota cuota;
     int cant_reg = archCuota.contar();
-    for ( int i = 0; i < cant_reg; i++ ) {
-        cuota = archCuota.leer( i );
-        if ( ( cuota.get_estado() == true ) && ( strcmp( dni, cuota.get_dni() ) == 0 ) ) {
-            cout << endl;
-            cuota.mostrar();
-        }
-    }
+    listar(dni);
 
 
     cout << "Ingrese el mes de la cuota a eliminar: ";
@@ -168,7 +164,7 @@ void FuncionesCuota::eliminar() {
     int anio;
     cin >> anio;
 
-    int pos = archCuota.buscar( dni, mes, anio );
+    int pos = archCuota.buscar( dni, mes, anio , "c");
     if ( pos != -1 ) {
         Cuota cuota = archCuota.leer( pos );
         if ( cuota.get_estado() ) {

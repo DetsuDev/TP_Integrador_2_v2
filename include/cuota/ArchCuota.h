@@ -13,8 +13,7 @@ public:
     bool grabar( Cuota obj );
     bool modificar( Cuota obj, int pos );
     int contar();
-    int buscar( const char* dni, int mes, int anio );
-    int buscar_dni( const char* dni);
+    int buscar( const char* dni, int mes, int anio, const char* tipo );
     void limpiar(const char* dni);
 };
 

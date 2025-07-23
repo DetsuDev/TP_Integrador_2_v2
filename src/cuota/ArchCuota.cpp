@@ -39,48 +39,37 @@ void ArchCuota::limpiar( const char* dni ) {
         obj = leer ( i );
         if ( strcmp( obj.get_dni(), dni ) == 0 ) {
             if ( obj.get_estado() ) {
-                obj.set_estado(false);
+                obj.set_estado( false );
             }
         }
     }
 }
 
-int ArchCuota::buscar( const char *dni, int mes, int anio ) {
+int ArchCuota::buscar( const char *dni, int mes, int anio, const char *tipo ) {
+    /// Tipo: "c" para completa, "d" para solo Dni;
     Cuota obj;
     int cantReg = contar();
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
 
-        if (strcmp( obj.get_dni(), dni ) == 0 && obj.get_mes() == mes && obj.get_anio() == anio)
-        {
-            if (obj.get_estado())
-            {
-                return i;
+        if ( obj.get_estado() ) {
+            if ( strcmp( obj.get_dni(), dni ) == 0 ) {
+                if ( strcmp( "d", tipo ) == 0 ) {
+                    return i;
+                }
+                if ( strcmp( "c", tipo ) == 0 ) {
+                    if ( obj.get_mes() == mes && obj.get_anio() == anio ) {
+                        return i;
+                    }
+                }
             }
-            else
-            {
-                return -1;
-            }
+        } else {
+            return -1;
         }
     }
     return -2;
 }
 
-int ArchCuota::buscar_dni( const char *dni ) {
-    Cuota obj;
-    int cantReg = contar();
-    for ( int i = 0; i < cantReg; i++ ) {
-        obj = leer( i );
-        if ( strcmp( obj.get_dni(), dni ) == 0 ) {
-            if ( obj.get_estado() ) {
-                return i;
-            } else {
-                return -1;
-            }
-        }
-    }
-    return -2;
-}
 bool ArchCuota::modificar( Cuota obj, int pos ) {
     FILE *p;
     p = fopen( nombre, "rb+" );

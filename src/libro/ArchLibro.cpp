@@ -29,19 +29,21 @@ Libro ArchLibro::leer( int pos ) {
     fclose( p );
     return obj;
 }
-
-
-int ArchLibro::buscar( const char *isbn ) {
+int ArchLibro::buscar( const char *dato, const char *tipo ) {
+    /// Tipos de datos: i para isbn, t para titulo,
     Libro obj;
     int cantReg = contar();
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
-        if ( strcmp( obj.get_isbn(), isbn ) == 0 ) {
-            if ( obj.get_estado() ) {
+        if ( obj.get_estado() ) {
+            if (strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 ) {
                 return i;
-            } else {
-                return -1;
             }
+            if ( strcmp( "t", tipo ) == 0 && strcmp( obj.get_titulo(), dato ) == 0 ) {
+                return i;
+            }
+        } else {
+            return -1;
         }
     }
     return -2;

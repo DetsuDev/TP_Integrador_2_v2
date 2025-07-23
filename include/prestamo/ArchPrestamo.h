@@ -14,8 +14,7 @@ public:
     bool modificar( Prestamo obj, int pos );
     int contar();
     int buscar_id( int id_prestamo );
-    int buscar_dni( const char* dni );
-    int buscar_isbn( const char* isbn );
+    int buscar( const char* dato, const char* tipo );
     void limpiar(const char* dni);
 };
 

@@ -12,7 +12,7 @@ public:
     bool grabar( Libro obj );
     bool modificar( Libro obj, int pos );
     int contar();
-    int buscar( const char* isbn );
+    int buscar( const char* dato, const char* titulo );
 };
 
 #endif // ARCHLIBRO_H

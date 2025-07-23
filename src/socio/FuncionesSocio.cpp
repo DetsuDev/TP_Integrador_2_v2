@@ -122,8 +122,8 @@ void FuncionesSocio::eliminar()
             Prestamo prest;
             Cuota cuota;
             Socio socio = archSocio.leer(pos_socio);
-            int pos_prest =  archPrest.buscar_dni(dni);
-            int pos_cuota =  archCuota.buscar_dni(dni);
+            int pos_prest =  archPrest.buscar(dni, "d");
+            int pos_cuota =  archCuota.buscar(dni,0,0, "d");
             cout << pos_prest << endl;
             cout << pos_cuota << endl;
             if (pos_prest > -1 && pos_cuota > -1) {
