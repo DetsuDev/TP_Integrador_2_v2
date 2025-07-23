@@ -35,9 +35,7 @@ int ArchSocio::buscar( const char *dni ) {
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
         if ( strcmp( obj.get_dni(), dni ) == 0 ) {
-            if ( obj.get_estado() ) {
-                return i;
-            }
+            return i;
         }
     }
     return -1;
