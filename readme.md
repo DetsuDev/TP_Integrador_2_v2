@@ -1,6 +1,6 @@
 Objeto Socio: DNI, Nombre, Apellido, Email, Fecha de Nacimiento, Direccion. <br>
 Objeto Libro: ISBN, Nombre del libro, Nombre del autor, Fecha de publicacion, cantidad de ejemplares. <br>
-Objeto Prestamos: Libro prestado, Socio al que se le presto, fecha del prestamo, fecha de devolucion. <br>
+Objeto Prestamos: ID_prestamo, Libro prestado, Socio al que se le presto, fecha del prestamo, fecha de devolucion. <br>
 Objeto Cuota: Numero de Socio, Fecha de pago, Importe, Mes, Año, Importe. <br>
 
 Socio (cargar, listar, buscar dni, eliminar) ✔ <br>
