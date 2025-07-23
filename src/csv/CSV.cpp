@@ -5,7 +5,7 @@ using namespace std;
 
 void CSV::exp_socios() {
     ofstream archivo("files/CSV/socios.csv");
-    archivo << "DNI,Nombre,Apellido,Email\n";
+    archivo << "DNI,Nombre,Apellido,FechaNac,Calle,Altura,Localidad,Partido, CP,Email\n";
     Socio socio;
     for (int i = 0; i < archSocio.contar(); i++) {
         socio = archSocio.leer(i);
@@ -14,6 +14,14 @@ void CSV::exp_socios() {
         archivo << socio.get_dni() << ","
                 << socio.get_nombre() << ","
                 << socio.get_apellido() << ","
+                << socio.get_fecha_nac().get_dia() << "/"
+                << socio.get_fecha_nac().get_mes() << "/"
+                << socio.get_fecha_nac().get_anio() << ","
+                << socio.get_domicilio().get_calle() << ","
+                << socio.get_domicilio().get_altura() << ","
+                << socio.get_domicilio().get_localidad() << ","
+                << socio.get_domicilio().get_partido() << ","
+                << socio.get_domicilio().get_codigo_postal() << ","
                 << socio.get_email() << "\n";
         }
     }

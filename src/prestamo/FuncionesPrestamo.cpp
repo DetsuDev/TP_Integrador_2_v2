@@ -50,7 +50,6 @@ void FuncionesPrestamo::registrar() {
                 prest.set_dni( dni );
                 prest.set_estado( true );
                 archPrest.grabar( prest );
-                system( "pause" );
                 libro.set_c_ejemplares( libro.get_c_ejemplares() - 1 );
                 archLibro.modificar( libro, pos_libro );
             } else {
