@@ -143,19 +143,25 @@ void FuncionesPrestamo::buscar() {
 /// Eliminar
 void FuncionesPrestamo::eliminar() {
     listar( "0", "0" );
+    Libro libro;
+    int pos_libro=-1;
     int id_prestamo;
     cout << "Ingrese Id del prestamo a eliminar: ";
     cin >> id_prestamo;
 
-    int pos = archPrest.buscar_id( id_prestamo );
-    if ( pos > -1 ) {
-        Prestamo obj = archPrest.leer( pos );
+    int pos_prest = archPrest.buscar_id( id_prestamo );
+    if ( pos_prest > -1 ) {
+        Prestamo prest = archPrest.leer( pos_prest );
         cout << "Eliminar este Prestamo? (s/N): ";
         char opc;
         cin >> opc;
         if ( opc == 'S' || opc == 's' ) {
-            obj.set_estado( false );
-            archPrest.modificar( obj, pos );
+            prest.set_estado( false );
+            pos_libro = archLibro.buscar(prest.get_isbn(), "i");
+            libro = archLibro.leer(pos_libro);
+            libro.set_c_ejemplares( libro.get_c_ejemplares() + 1 );
+            archLibro.modificar( libro, pos_libro );
+            archPrest.modificar( prest, pos_prest );
             cout << "Prestamo Eliminado.\n";
         } else {
             cout << "Operacion Cancelada.\n";
