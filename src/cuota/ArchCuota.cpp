@@ -49,6 +49,7 @@ void ArchCuota::limpiar( const char* dni )
             if ( obj.get_estado() )
             {
                 obj.set_estado( false );
+                modificar(obj, i);
             }
         }
     }

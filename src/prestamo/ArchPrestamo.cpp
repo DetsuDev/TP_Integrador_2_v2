@@ -38,6 +38,8 @@ void ArchPrestamo::limpiar( const char* dni ) {
         if ( strcmp( obj.get_dni(), dni ) == 0 ) {
             if ( obj.get_estado() ) {
                 obj.set_estado( false );
+
+                modificar( obj, i );
             }
         }
     }
@@ -49,14 +51,10 @@ int ArchPrestamo::buscar_id( int id_prestamo ) {
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
         if ( obj.get_id_prestamo() == id_prestamo ) {
-            if ( obj.get_estado() ) {
-                return i;
-            } else {
-                return -1;
-            }
+            return i;
         }
     }
-    return -2;
+    return -1;
 }
 
 int ArchPrestamo::buscar( const char *dato, const char *tipo ) {
@@ -65,12 +63,12 @@ int ArchPrestamo::buscar( const char *dato, const char *tipo ) {
     int cantReg = contar();
     for ( int i = 0; i < cantReg; i++ ) {
         obj = leer( i );
-            if (strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 ) {
-                return i;
-            }
-            if ( strcmp( "d", tipo ) == 0 && strcmp( obj.get_dni(), dato ) == 0 ) {
-                return i;
-            }
+        if ( strcmp( "i", tipo ) == 0 && strcmp( obj.get_isbn(), dato ) == 0 ) {
+            return i;
+        }
+        if ( strcmp( "d", tipo ) == 0 && strcmp( obj.get_dni(), dato ) == 0 ) {
+            return i;
+        }
 
     }
     return -1;
