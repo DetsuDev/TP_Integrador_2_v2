@@ -2,22 +2,26 @@
 using namespace std;
 
 #include "backup/Backup.h"
-#include <fstream>
 
-bool Backup::backup(const char* archivoOrigen, const char* archivoDestino){
-
-    ifstream origen(archivoOrigen, ios::binary);
-    ofstream destino(archivoDestino, ios::binary);
-
-    if (!origen || !destino)
-    {
-        cout << "Error al abrir archivos para backup. " << endl;
+bool Backup::backup(const char* archivoOrigen, const char* archivoDestino) {
+    FILE* origen = fopen(archivoOrigen, "rb");
+    FILE* destino = fopen(archivoDestino, "wb");
+    if (!origen || !destino) {
+        cout << "Error al abrir archivos para backup." << endl;
+        if (origen) fclose(origen);
+        if (destino) fclose(destino);
         return false;
     }
 
-    destino << origen.rdbuf();
-    origen.close();
-    destino.close();
+    const size_t bufferSize = 4096;
+    char buffer[bufferSize];
+    size_t bytesleidos;
+    while ((bytesleidos = fread(buffer, 1, bufferSize, origen)) > 0) {
+        fwrite(buffer, 1, bytesleidos, destino);
+    }
+
+    fclose(origen);
+    fclose(destino);
     return true;
 }
 
