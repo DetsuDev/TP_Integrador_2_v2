@@ -166,7 +166,6 @@ void FuncionesCuota::eliminar() {
     f.cargar_cadena( dni, 9 );
 
     Cuota cuota;
-    int cant_reg = archCuota.contar();
     listar( dni );
 
 

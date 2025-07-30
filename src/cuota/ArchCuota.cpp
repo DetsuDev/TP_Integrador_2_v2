@@ -27,16 +27,13 @@ Cuota ArchCuota::leer( int pos )
 {
     Cuota obj;
 
-
     FILE *p = fopen( nombre, "rb" );
     fseek( p, pos * sizeof obj, 0 );
     fread( &obj, sizeof obj, 1, p );
     fclose( p );
-    if ( obj.get_estado() )
-    {
-        return obj;
-    }
+    return obj;
 }
+
 void ArchCuota::limpiar( const char* dni )
 {
     Cuota obj;
