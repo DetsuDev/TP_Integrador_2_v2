@@ -127,20 +127,20 @@ void FuncionesPrestamo::buscar() {
         } else {
             cout << "Prestamo no encontrado.\n";
         }
-    }
     break;
+    }
     case 2: {
         cout << "Ingrese DNI a buscar: ";
         f.cargar_cadena( dni, 9 );
         listar( dni, "d" );
-    }
     break;
+    }
     case 3: {
         cout << "Ingrese el ISBN a buscar: ";
         f.cargar_cadena( isbn, 19 );
         listar( isbn, "i" );
-    }
     break;
+    }
     case 0:
         opc = -1;
         break;
